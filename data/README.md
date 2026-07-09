@@ -2,12 +2,20 @@
 
 Three kinds of data, three roles. See the root README for the train/dev/golden split rules.
 
-## `seed/contrastive_seed.jsonl`  — curated, committed, ready to use
-45 rows = **15 contrastive groups × 3 registers** (informal / polite / formal), each with a
-**register-matched English** target, spanning casual / business / service domains.
-Hand-authored (teacher-authored, `source: curated-seed`) and **validated**: every row's
-label equals the register checker's output (0 mismatches), and the bands are perfectly
-balanced (15/15/15). This is honest, immediately-trainable data — not scraped.
+## `seed/` — the trainable set (committed, verified): **333 rows total**
+
+**`contrastive_seed.jsonl`** — 45 hand-authored rows (15 groups × 3 registers), casual /
+business / service, each with register-matched English. `source: curated-seed`.
+
+**`generated_seed.jsonl`** — 288 rows from `python -m data.build_seed`: a compositional
+generator that crosses verified register *predicates* with document *objects*. Every row is
+(1) validated — the checker must agree with the intended band — and (2) leak-filtered against
+the golden set. `source: seed-compositional`. Business-document-heavy on purpose, to fill the
+formal/keigo band that casual corpora lack. Trade-off: templated English phrasing (diversify
+later with the teacher).
+
+Combined, the trainable set is **balanced 111/111/111**, with **0 checker mismatches, 0
+corruption, and 0 content-stem leakage into the golden set** (all re-verified).
 
 ## `harvested/`  — real source sentences, scraped from CoCoA-MT
 `python -m data.harvest_cocoa` pulls ~1,980 **real Japanese sentences** with checker labels

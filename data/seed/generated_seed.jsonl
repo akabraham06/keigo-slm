@@ -1,0 +1,288 @@
+{"jp": "報告書送るね。", "source_band": "informal", "en": "I'll send the report.", "group_id": "seedgen-send-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を送ります。", "source_band": "polite", "en": "I'll send the report over.", "group_id": "seedgen-send-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書をお送りいたします。", "source_band": "formal", "en": "I will send the report to you.", "group_id": "seedgen-send-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書送るね。", "source_band": "informal", "en": "I'll send the invoice.", "group_id": "seedgen-send-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を送ります。", "source_band": "polite", "en": "I'll send the invoice over.", "group_id": "seedgen-send-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書をお送りいたします。", "source_band": "formal", "en": "I will send the invoice to you.", "group_id": "seedgen-send-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書送るね。", "source_band": "informal", "en": "I'll send the contract.", "group_id": "seedgen-send-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を送ります。", "source_band": "polite", "en": "I'll send the contract over.", "group_id": "seedgen-send-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書をお送りいたします。", "source_band": "formal", "en": "I will send the contract to you.", "group_id": "seedgen-send-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書送るね。", "source_band": "informal", "en": "I'll send the estimate.", "group_id": "seedgen-send-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を送ります。", "source_band": "polite", "en": "I'll send the estimate over.", "group_id": "seedgen-send-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書をお送りいたします。", "source_band": "formal", "en": "I will send the estimate to you.", "group_id": "seedgen-send-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書送るね。", "source_band": "informal", "en": "I'll send the proposal.", "group_id": "seedgen-send-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を送ります。", "source_band": "polite", "en": "I'll send the proposal over.", "group_id": "seedgen-send-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書をお送りいたします。", "source_band": "formal", "en": "I will send the proposal to you.", "group_id": "seedgen-send-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録送るね。", "source_band": "informal", "en": "I'll send the minutes.", "group_id": "seedgen-send-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を送ります。", "source_band": "polite", "en": "I'll send the minutes over.", "group_id": "seedgen-send-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録をお送りいたします。", "source_band": "formal", "en": "I will send the minutes to you.", "group_id": "seedgen-send-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書送るね。", "source_band": "informal", "en": "I'll send the receipt.", "group_id": "seedgen-send-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を送ります。", "source_band": "polite", "en": "I'll send the receipt over.", "group_id": "seedgen-send-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書をお送りいたします。", "source_band": "formal", "en": "I will send the receipt to you.", "group_id": "seedgen-send-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール送るね。", "source_band": "informal", "en": "I'll send the email.", "group_id": "seedgen-send-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを送ります。", "source_band": "polite", "en": "I'll send the email over.", "group_id": "seedgen-send-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールをお送りいたします。", "source_band": "formal", "en": "I will send the email to you.", "group_id": "seedgen-send-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル送るね。", "source_band": "informal", "en": "I'll send the file.", "group_id": "seedgen-send-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを送ります。", "source_band": "polite", "en": "I'll send the file over.", "group_id": "seedgen-send-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルをお送りいたします。", "source_band": "formal", "en": "I will send the file to you.", "group_id": "seedgen-send-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ送るね。", "source_band": "informal", "en": "I'll send the catalogue.", "group_id": "seedgen-send-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを送ります。", "source_band": "polite", "en": "I'll send the catalogue over.", "group_id": "seedgen-send-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログをお送りいたします。", "source_band": "formal", "en": "I will send the catalogue to you.", "group_id": "seedgen-send-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表送るね。", "source_band": "informal", "en": "I'll send the schedule.", "group_id": "seedgen-send-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を送ります。", "source_band": "polite", "en": "I'll send the schedule over.", "group_id": "seedgen-send-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表をお送りいたします。", "source_band": "formal", "en": "I will send the schedule to you.", "group_id": "seedgen-send-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類送るね。", "source_band": "informal", "en": "I'll send the documents.", "group_id": "seedgen-send-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を送ります。", "source_band": "polite", "en": "I'll send the documents over.", "group_id": "seedgen-send-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類をお送りいたします。", "source_band": "formal", "en": "I will send the documents to you.", "group_id": "seedgen-send-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書確認しとくね。", "source_band": "informal", "en": "I'll double-check the report.", "group_id": "seedgen-confirm-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を確認します。", "source_band": "polite", "en": "I'll confirm the report.", "group_id": "seedgen-confirm-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を確認いたします。", "source_band": "formal", "en": "I will confirm the report.", "group_id": "seedgen-confirm-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書確認しとくね。", "source_band": "informal", "en": "I'll double-check the invoice.", "group_id": "seedgen-confirm-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を確認します。", "source_band": "polite", "en": "I'll confirm the invoice.", "group_id": "seedgen-confirm-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を確認いたします。", "source_band": "formal", "en": "I will confirm the invoice.", "group_id": "seedgen-confirm-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書確認しとくね。", "source_band": "informal", "en": "I'll double-check the contract.", "group_id": "seedgen-confirm-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を確認します。", "source_band": "polite", "en": "I'll confirm the contract.", "group_id": "seedgen-confirm-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を確認いたします。", "source_band": "formal", "en": "I will confirm the contract.", "group_id": "seedgen-confirm-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書確認しとくね。", "source_band": "informal", "en": "I'll double-check the estimate.", "group_id": "seedgen-confirm-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を確認します。", "source_band": "polite", "en": "I'll confirm the estimate.", "group_id": "seedgen-confirm-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を確認いたします。", "source_band": "formal", "en": "I will confirm the estimate.", "group_id": "seedgen-confirm-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書確認しとくね。", "source_band": "informal", "en": "I'll double-check the proposal.", "group_id": "seedgen-confirm-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を確認します。", "source_band": "polite", "en": "I'll confirm the proposal.", "group_id": "seedgen-confirm-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を確認いたします。", "source_band": "formal", "en": "I will confirm the proposal.", "group_id": "seedgen-confirm-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録確認しとくね。", "source_band": "informal", "en": "I'll double-check the minutes.", "group_id": "seedgen-confirm-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を確認します。", "source_band": "polite", "en": "I'll confirm the minutes.", "group_id": "seedgen-confirm-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を確認いたします。", "source_band": "formal", "en": "I will confirm the minutes.", "group_id": "seedgen-confirm-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書確認しとくね。", "source_band": "informal", "en": "I'll double-check the receipt.", "group_id": "seedgen-confirm-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を確認します。", "source_band": "polite", "en": "I'll confirm the receipt.", "group_id": "seedgen-confirm-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を確認いたします。", "source_band": "formal", "en": "I will confirm the receipt.", "group_id": "seedgen-confirm-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール確認しとくね。", "source_band": "informal", "en": "I'll double-check the email.", "group_id": "seedgen-confirm-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを確認します。", "source_band": "polite", "en": "I'll confirm the email.", "group_id": "seedgen-confirm-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを確認いたします。", "source_band": "formal", "en": "I will confirm the email.", "group_id": "seedgen-confirm-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル確認しとくね。", "source_band": "informal", "en": "I'll double-check the file.", "group_id": "seedgen-confirm-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを確認します。", "source_band": "polite", "en": "I'll confirm the file.", "group_id": "seedgen-confirm-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを確認いたします。", "source_band": "formal", "en": "I will confirm the file.", "group_id": "seedgen-confirm-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ確認しとくね。", "source_band": "informal", "en": "I'll double-check the catalogue.", "group_id": "seedgen-confirm-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを確認します。", "source_band": "polite", "en": "I'll confirm the catalogue.", "group_id": "seedgen-confirm-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを確認いたします。", "source_band": "formal", "en": "I will confirm the catalogue.", "group_id": "seedgen-confirm-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表確認しとくね。", "source_band": "informal", "en": "I'll double-check the schedule.", "group_id": "seedgen-confirm-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を確認します。", "source_band": "polite", "en": "I'll confirm the schedule.", "group_id": "seedgen-confirm-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を確認いたします。", "source_band": "formal", "en": "I will confirm the schedule.", "group_id": "seedgen-confirm-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類確認しとくね。", "source_band": "informal", "en": "I'll double-check the documents.", "group_id": "seedgen-confirm-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を確認します。", "source_band": "polite", "en": "I'll confirm the documents.", "group_id": "seedgen-confirm-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を確認いたします。", "source_band": "formal", "en": "I will confirm the documents.", "group_id": "seedgen-confirm-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書用意するね。", "source_band": "informal", "en": "I'll get the report ready.", "group_id": "seedgen-prepare-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を用意します。", "source_band": "polite", "en": "I'll prepare the report.", "group_id": "seedgen-prepare-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書をご用意いたします。", "source_band": "formal", "en": "I will prepare the report.", "group_id": "seedgen-prepare-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書用意するね。", "source_band": "informal", "en": "I'll get the invoice ready.", "group_id": "seedgen-prepare-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を用意します。", "source_band": "polite", "en": "I'll prepare the invoice.", "group_id": "seedgen-prepare-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書をご用意いたします。", "source_band": "formal", "en": "I will prepare the invoice.", "group_id": "seedgen-prepare-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書用意するね。", "source_band": "informal", "en": "I'll get the contract ready.", "group_id": "seedgen-prepare-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を用意します。", "source_band": "polite", "en": "I'll prepare the contract.", "group_id": "seedgen-prepare-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書をご用意いたします。", "source_band": "formal", "en": "I will prepare the contract.", "group_id": "seedgen-prepare-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書用意するね。", "source_band": "informal", "en": "I'll get the estimate ready.", "group_id": "seedgen-prepare-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を用意します。", "source_band": "polite", "en": "I'll prepare the estimate.", "group_id": "seedgen-prepare-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書をご用意いたします。", "source_band": "formal", "en": "I will prepare the estimate.", "group_id": "seedgen-prepare-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書用意するね。", "source_band": "informal", "en": "I'll get the proposal ready.", "group_id": "seedgen-prepare-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を用意します。", "source_band": "polite", "en": "I'll prepare the proposal.", "group_id": "seedgen-prepare-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書をご用意いたします。", "source_band": "formal", "en": "I will prepare the proposal.", "group_id": "seedgen-prepare-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録用意するね。", "source_band": "informal", "en": "I'll get the minutes ready.", "group_id": "seedgen-prepare-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を用意します。", "source_band": "polite", "en": "I'll prepare the minutes.", "group_id": "seedgen-prepare-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録をご用意いたします。", "source_band": "formal", "en": "I will prepare the minutes.", "group_id": "seedgen-prepare-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書用意するね。", "source_band": "informal", "en": "I'll get the receipt ready.", "group_id": "seedgen-prepare-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を用意します。", "source_band": "polite", "en": "I'll prepare the receipt.", "group_id": "seedgen-prepare-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書をご用意いたします。", "source_band": "formal", "en": "I will prepare the receipt.", "group_id": "seedgen-prepare-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール用意するね。", "source_band": "informal", "en": "I'll get the email ready.", "group_id": "seedgen-prepare-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを用意します。", "source_band": "polite", "en": "I'll prepare the email.", "group_id": "seedgen-prepare-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールをご用意いたします。", "source_band": "formal", "en": "I will prepare the email.", "group_id": "seedgen-prepare-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル用意するね。", "source_band": "informal", "en": "I'll get the file ready.", "group_id": "seedgen-prepare-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを用意します。", "source_band": "polite", "en": "I'll prepare the file.", "group_id": "seedgen-prepare-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルをご用意いたします。", "source_band": "formal", "en": "I will prepare the file.", "group_id": "seedgen-prepare-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ用意するね。", "source_band": "informal", "en": "I'll get the catalogue ready.", "group_id": "seedgen-prepare-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを用意します。", "source_band": "polite", "en": "I'll prepare the catalogue.", "group_id": "seedgen-prepare-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログをご用意いたします。", "source_band": "formal", "en": "I will prepare the catalogue.", "group_id": "seedgen-prepare-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表用意するね。", "source_band": "informal", "en": "I'll get the schedule ready.", "group_id": "seedgen-prepare-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を用意します。", "source_band": "polite", "en": "I'll prepare the schedule.", "group_id": "seedgen-prepare-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表をご用意いたします。", "source_band": "formal", "en": "I will prepare the schedule.", "group_id": "seedgen-prepare-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類用意するね。", "source_band": "informal", "en": "I'll get the documents ready.", "group_id": "seedgen-prepare-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を用意します。", "source_band": "polite", "en": "I'll prepare the documents.", "group_id": "seedgen-prepare-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類をご用意いたします。", "source_band": "formal", "en": "I will prepare the documents.", "group_id": "seedgen-prepare-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書持ってくね。", "source_band": "informal", "en": "I'll bring the report.", "group_id": "seedgen-bring-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を持っていきます。", "source_band": "polite", "en": "I'll bring the report along.", "group_id": "seedgen-bring-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書をお持ちいたします。", "source_band": "formal", "en": "I will bring the report.", "group_id": "seedgen-bring-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書持ってくね。", "source_band": "informal", "en": "I'll bring the invoice.", "group_id": "seedgen-bring-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を持っていきます。", "source_band": "polite", "en": "I'll bring the invoice along.", "group_id": "seedgen-bring-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書をお持ちいたします。", "source_band": "formal", "en": "I will bring the invoice.", "group_id": "seedgen-bring-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書持ってくね。", "source_band": "informal", "en": "I'll bring the contract.", "group_id": "seedgen-bring-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を持っていきます。", "source_band": "polite", "en": "I'll bring the contract along.", "group_id": "seedgen-bring-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書をお持ちいたします。", "source_band": "formal", "en": "I will bring the contract.", "group_id": "seedgen-bring-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書持ってくね。", "source_band": "informal", "en": "I'll bring the estimate.", "group_id": "seedgen-bring-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を持っていきます。", "source_band": "polite", "en": "I'll bring the estimate along.", "group_id": "seedgen-bring-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書をお持ちいたします。", "source_band": "formal", "en": "I will bring the estimate.", "group_id": "seedgen-bring-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書持ってくね。", "source_band": "informal", "en": "I'll bring the proposal.", "group_id": "seedgen-bring-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を持っていきます。", "source_band": "polite", "en": "I'll bring the proposal along.", "group_id": "seedgen-bring-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書をお持ちいたします。", "source_band": "formal", "en": "I will bring the proposal.", "group_id": "seedgen-bring-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録持ってくね。", "source_band": "informal", "en": "I'll bring the minutes.", "group_id": "seedgen-bring-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を持っていきます。", "source_band": "polite", "en": "I'll bring the minutes along.", "group_id": "seedgen-bring-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録をお持ちいたします。", "source_band": "formal", "en": "I will bring the minutes.", "group_id": "seedgen-bring-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書持ってくね。", "source_band": "informal", "en": "I'll bring the receipt.", "group_id": "seedgen-bring-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を持っていきます。", "source_band": "polite", "en": "I'll bring the receipt along.", "group_id": "seedgen-bring-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書をお持ちいたします。", "source_band": "formal", "en": "I will bring the receipt.", "group_id": "seedgen-bring-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール持ってくね。", "source_band": "informal", "en": "I'll bring the email.", "group_id": "seedgen-bring-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを持っていきます。", "source_band": "polite", "en": "I'll bring the email along.", "group_id": "seedgen-bring-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールをお持ちいたします。", "source_band": "formal", "en": "I will bring the email.", "group_id": "seedgen-bring-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル持ってくね。", "source_band": "informal", "en": "I'll bring the file.", "group_id": "seedgen-bring-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを持っていきます。", "source_band": "polite", "en": "I'll bring the file along.", "group_id": "seedgen-bring-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルをお持ちいたします。", "source_band": "formal", "en": "I will bring the file.", "group_id": "seedgen-bring-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ持ってくね。", "source_band": "informal", "en": "I'll bring the catalogue.", "group_id": "seedgen-bring-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを持っていきます。", "source_band": "polite", "en": "I'll bring the catalogue along.", "group_id": "seedgen-bring-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログをお持ちいたします。", "source_band": "formal", "en": "I will bring the catalogue.", "group_id": "seedgen-bring-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表持ってくね。", "source_band": "informal", "en": "I'll bring the schedule.", "group_id": "seedgen-bring-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を持っていきます。", "source_band": "polite", "en": "I'll bring the schedule along.", "group_id": "seedgen-bring-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表をお持ちいたします。", "source_band": "formal", "en": "I will bring the schedule.", "group_id": "seedgen-bring-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類持ってくね。", "source_band": "informal", "en": "I'll bring the documents.", "group_id": "seedgen-bring-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を持っていきます。", "source_band": "polite", "en": "I'll bring the documents along.", "group_id": "seedgen-bring-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類をお持ちいたします。", "source_band": "formal", "en": "I will bring the documents.", "group_id": "seedgen-bring-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書見とくね。", "source_band": "informal", "en": "I'll take a look at the report.", "group_id": "seedgen-review-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書に目を通します。", "source_band": "polite", "en": "I'll look over the report.", "group_id": "seedgen-review-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the report.", "group_id": "seedgen-review-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書見とくね。", "source_band": "informal", "en": "I'll take a look at the invoice.", "group_id": "seedgen-review-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書に目を通します。", "source_band": "polite", "en": "I'll look over the invoice.", "group_id": "seedgen-review-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the invoice.", "group_id": "seedgen-review-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書見とくね。", "source_band": "informal", "en": "I'll take a look at the contract.", "group_id": "seedgen-review-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書に目を通します。", "source_band": "polite", "en": "I'll look over the contract.", "group_id": "seedgen-review-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the contract.", "group_id": "seedgen-review-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書見とくね。", "source_band": "informal", "en": "I'll take a look at the estimate.", "group_id": "seedgen-review-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書に目を通します。", "source_band": "polite", "en": "I'll look over the estimate.", "group_id": "seedgen-review-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the estimate.", "group_id": "seedgen-review-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書見とくね。", "source_band": "informal", "en": "I'll take a look at the proposal.", "group_id": "seedgen-review-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書に目を通します。", "source_band": "polite", "en": "I'll look over the proposal.", "group_id": "seedgen-review-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the proposal.", "group_id": "seedgen-review-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録見とくね。", "source_band": "informal", "en": "I'll take a look at the minutes.", "group_id": "seedgen-review-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録に目を通します。", "source_band": "polite", "en": "I'll look over the minutes.", "group_id": "seedgen-review-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the minutes.", "group_id": "seedgen-review-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書見とくね。", "source_band": "informal", "en": "I'll take a look at the receipt.", "group_id": "seedgen-review-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書に目を通します。", "source_band": "polite", "en": "I'll look over the receipt.", "group_id": "seedgen-review-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the receipt.", "group_id": "seedgen-review-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール見とくね。", "source_band": "informal", "en": "I'll take a look at the email.", "group_id": "seedgen-review-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールに目を通します。", "source_band": "polite", "en": "I'll look over the email.", "group_id": "seedgen-review-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを拝見いたします。", "source_band": "formal", "en": "I would be glad to review the email.", "group_id": "seedgen-review-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル見とくね。", "source_band": "informal", "en": "I'll take a look at the file.", "group_id": "seedgen-review-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルに目を通します。", "source_band": "polite", "en": "I'll look over the file.", "group_id": "seedgen-review-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを拝見いたします。", "source_band": "formal", "en": "I would be glad to review the file.", "group_id": "seedgen-review-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ見とくね。", "source_band": "informal", "en": "I'll take a look at the catalogue.", "group_id": "seedgen-review-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログに目を通します。", "source_band": "polite", "en": "I'll look over the catalogue.", "group_id": "seedgen-review-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを拝見いたします。", "source_band": "formal", "en": "I would be glad to review the catalogue.", "group_id": "seedgen-review-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表見とくね。", "source_band": "informal", "en": "I'll take a look at the schedule.", "group_id": "seedgen-review-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表に目を通します。", "source_band": "polite", "en": "I'll look over the schedule.", "group_id": "seedgen-review-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the schedule.", "group_id": "seedgen-review-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類見とくね。", "source_band": "informal", "en": "I'll take a look at the documents.", "group_id": "seedgen-review-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類に目を通します。", "source_band": "polite", "en": "I'll look over the documents.", "group_id": "seedgen-review-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the documents.", "group_id": "seedgen-review-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書出すね。", "source_band": "informal", "en": "I'll hand in the report.", "group_id": "seedgen-submit-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を提出します。", "source_band": "polite", "en": "I'll submit the report.", "group_id": "seedgen-submit-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を提出いたします。", "source_band": "formal", "en": "I will submit the report.", "group_id": "seedgen-submit-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書出すね。", "source_band": "informal", "en": "I'll hand in the invoice.", "group_id": "seedgen-submit-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を提出します。", "source_band": "polite", "en": "I'll submit the invoice.", "group_id": "seedgen-submit-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を提出いたします。", "source_band": "formal", "en": "I will submit the invoice.", "group_id": "seedgen-submit-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書出すね。", "source_band": "informal", "en": "I'll hand in the contract.", "group_id": "seedgen-submit-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を提出します。", "source_band": "polite", "en": "I'll submit the contract.", "group_id": "seedgen-submit-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を提出いたします。", "source_band": "formal", "en": "I will submit the contract.", "group_id": "seedgen-submit-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書出すね。", "source_band": "informal", "en": "I'll hand in the estimate.", "group_id": "seedgen-submit-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を提出します。", "source_band": "polite", "en": "I'll submit the estimate.", "group_id": "seedgen-submit-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を提出いたします。", "source_band": "formal", "en": "I will submit the estimate.", "group_id": "seedgen-submit-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書出すね。", "source_band": "informal", "en": "I'll hand in the proposal.", "group_id": "seedgen-submit-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を提出します。", "source_band": "polite", "en": "I'll submit the proposal.", "group_id": "seedgen-submit-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を提出いたします。", "source_band": "formal", "en": "I will submit the proposal.", "group_id": "seedgen-submit-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録出すね。", "source_band": "informal", "en": "I'll hand in the minutes.", "group_id": "seedgen-submit-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を提出します。", "source_band": "polite", "en": "I'll submit the minutes.", "group_id": "seedgen-submit-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を提出いたします。", "source_band": "formal", "en": "I will submit the minutes.", "group_id": "seedgen-submit-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書出すね。", "source_band": "informal", "en": "I'll hand in the receipt.", "group_id": "seedgen-submit-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を提出します。", "source_band": "polite", "en": "I'll submit the receipt.", "group_id": "seedgen-submit-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を提出いたします。", "source_band": "formal", "en": "I will submit the receipt.", "group_id": "seedgen-submit-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール出すね。", "source_band": "informal", "en": "I'll hand in the email.", "group_id": "seedgen-submit-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを提出します。", "source_band": "polite", "en": "I'll submit the email.", "group_id": "seedgen-submit-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを提出いたします。", "source_band": "formal", "en": "I will submit the email.", "group_id": "seedgen-submit-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル出すね。", "source_band": "informal", "en": "I'll hand in the file.", "group_id": "seedgen-submit-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを提出します。", "source_band": "polite", "en": "I'll submit the file.", "group_id": "seedgen-submit-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを提出いたします。", "source_band": "formal", "en": "I will submit the file.", "group_id": "seedgen-submit-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ出すね。", "source_band": "informal", "en": "I'll hand in the catalogue.", "group_id": "seedgen-submit-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを提出します。", "source_band": "polite", "en": "I'll submit the catalogue.", "group_id": "seedgen-submit-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを提出いたします。", "source_band": "formal", "en": "I will submit the catalogue.", "group_id": "seedgen-submit-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表出すね。", "source_band": "informal", "en": "I'll hand in the schedule.", "group_id": "seedgen-submit-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を提出します。", "source_band": "polite", "en": "I'll submit the schedule.", "group_id": "seedgen-submit-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を提出いたします。", "source_band": "formal", "en": "I will submit the schedule.", "group_id": "seedgen-submit-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類出すね。", "source_band": "informal", "en": "I'll hand in the documents.", "group_id": "seedgen-submit-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を提出します。", "source_band": "polite", "en": "I'll submit the documents.", "group_id": "seedgen-submit-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を提出いたします。", "source_band": "formal", "en": "I will submit the documents.", "group_id": "seedgen-submit-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書返すね。", "source_band": "informal", "en": "I'll give the report back.", "group_id": "seedgen-return-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書をお返しします。", "source_band": "polite", "en": "I'll return the report.", "group_id": "seedgen-return-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書をお返しいたします。", "source_band": "formal", "en": "I will return the report.", "group_id": "seedgen-return-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書返すね。", "source_band": "informal", "en": "I'll give the invoice back.", "group_id": "seedgen-return-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書をお返しします。", "source_band": "polite", "en": "I'll return the invoice.", "group_id": "seedgen-return-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書をお返しいたします。", "source_band": "formal", "en": "I will return the invoice.", "group_id": "seedgen-return-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書返すね。", "source_band": "informal", "en": "I'll give the contract back.", "group_id": "seedgen-return-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書をお返しします。", "source_band": "polite", "en": "I'll return the contract.", "group_id": "seedgen-return-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書をお返しいたします。", "source_band": "formal", "en": "I will return the contract.", "group_id": "seedgen-return-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書返すね。", "source_band": "informal", "en": "I'll give the estimate back.", "group_id": "seedgen-return-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書をお返しします。", "source_band": "polite", "en": "I'll return the estimate.", "group_id": "seedgen-return-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書をお返しいたします。", "source_band": "formal", "en": "I will return the estimate.", "group_id": "seedgen-return-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書返すね。", "source_band": "informal", "en": "I'll give the proposal back.", "group_id": "seedgen-return-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書をお返しします。", "source_band": "polite", "en": "I'll return the proposal.", "group_id": "seedgen-return-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書をお返しいたします。", "source_band": "formal", "en": "I will return the proposal.", "group_id": "seedgen-return-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録返すね。", "source_band": "informal", "en": "I'll give the minutes back.", "group_id": "seedgen-return-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録をお返しします。", "source_band": "polite", "en": "I'll return the minutes.", "group_id": "seedgen-return-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録をお返しいたします。", "source_band": "formal", "en": "I will return the minutes.", "group_id": "seedgen-return-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書返すね。", "source_band": "informal", "en": "I'll give the receipt back.", "group_id": "seedgen-return-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書をお返しします。", "source_band": "polite", "en": "I'll return the receipt.", "group_id": "seedgen-return-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書をお返しいたします。", "source_band": "formal", "en": "I will return the receipt.", "group_id": "seedgen-return-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メール返すね。", "source_band": "informal", "en": "I'll give the email back.", "group_id": "seedgen-return-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールをお返しします。", "source_band": "polite", "en": "I'll return the email.", "group_id": "seedgen-return-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールをお返しいたします。", "source_band": "formal", "en": "I will return the email.", "group_id": "seedgen-return-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイル返すね。", "source_band": "informal", "en": "I'll give the file back.", "group_id": "seedgen-return-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルをお返しします。", "source_band": "polite", "en": "I'll return the file.", "group_id": "seedgen-return-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルをお返しいたします。", "source_band": "formal", "en": "I will return the file.", "group_id": "seedgen-return-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログ返すね。", "source_band": "informal", "en": "I'll give the catalogue back.", "group_id": "seedgen-return-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログをお返しします。", "source_band": "polite", "en": "I'll return the catalogue.", "group_id": "seedgen-return-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログをお返しいたします。", "source_band": "formal", "en": "I will return the catalogue.", "group_id": "seedgen-return-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表返すね。", "source_band": "informal", "en": "I'll give the schedule back.", "group_id": "seedgen-return-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表をお返しします。", "source_band": "polite", "en": "I'll return the schedule.", "group_id": "seedgen-return-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表をお返しいたします。", "source_band": "formal", "en": "I will return the schedule.", "group_id": "seedgen-return-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類返すね。", "source_band": "informal", "en": "I'll give the documents back.", "group_id": "seedgen-return-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類をお返しします。", "source_band": "polite", "en": "I'll return the documents.", "group_id": "seedgen-return-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類をお返しいたします。", "source_band": "formal", "en": "I will return the documents.", "group_id": "seedgen-return-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書もらっとくね。", "source_band": "informal", "en": "Got the report, thanks.", "group_id": "seedgen-receive-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を受け取ります。", "source_band": "polite", "en": "I've received the report.", "group_id": "seedgen-receive-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "報告書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the report.", "group_id": "seedgen-receive-0", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書もらっとくね。", "source_band": "informal", "en": "Got the invoice, thanks.", "group_id": "seedgen-receive-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を受け取ります。", "source_band": "polite", "en": "I've received the invoice.", "group_id": "seedgen-receive-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "請求書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the invoice.", "group_id": "seedgen-receive-1", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書もらっとくね。", "source_band": "informal", "en": "Got the contract, thanks.", "group_id": "seedgen-receive-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を受け取ります。", "source_band": "polite", "en": "I've received the contract.", "group_id": "seedgen-receive-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "契約書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the contract.", "group_id": "seedgen-receive-2", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書もらっとくね。", "source_band": "informal", "en": "Got the estimate, thanks.", "group_id": "seedgen-receive-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を受け取ります。", "source_band": "polite", "en": "I've received the estimate.", "group_id": "seedgen-receive-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "見積書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the estimate.", "group_id": "seedgen-receive-3", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書もらっとくね。", "source_band": "informal", "en": "Got the proposal, thanks.", "group_id": "seedgen-receive-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を受け取ります。", "source_band": "polite", "en": "I've received the proposal.", "group_id": "seedgen-receive-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "企画書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the proposal.", "group_id": "seedgen-receive-4", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録もらっとくね。", "source_band": "informal", "en": "Got the minutes, thanks.", "group_id": "seedgen-receive-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を受け取ります。", "source_band": "polite", "en": "I've received the minutes.", "group_id": "seedgen-receive-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "議事録を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the minutes.", "group_id": "seedgen-receive-5", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書もらっとくね。", "source_band": "informal", "en": "Got the receipt, thanks.", "group_id": "seedgen-receive-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を受け取ります。", "source_band": "polite", "en": "I've received the receipt.", "group_id": "seedgen-receive-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "領収書を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the receipt.", "group_id": "seedgen-receive-6", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールもらっとくね。", "source_band": "informal", "en": "Got the email, thanks.", "group_id": "seedgen-receive-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを受け取ります。", "source_band": "polite", "en": "I've received the email.", "group_id": "seedgen-receive-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "メールを頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the email.", "group_id": "seedgen-receive-7", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルもらっとくね。", "source_band": "informal", "en": "Got the file, thanks.", "group_id": "seedgen-receive-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを受け取ります。", "source_band": "polite", "en": "I've received the file.", "group_id": "seedgen-receive-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "ファイルを頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the file.", "group_id": "seedgen-receive-8", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログもらっとくね。", "source_band": "informal", "en": "Got the catalogue, thanks.", "group_id": "seedgen-receive-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを受け取ります。", "source_band": "polite", "en": "I've received the catalogue.", "group_id": "seedgen-receive-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "カタログを頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the catalogue.", "group_id": "seedgen-receive-9", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表もらっとくね。", "source_band": "informal", "en": "Got the schedule, thanks.", "group_id": "seedgen-receive-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を受け取ります。", "source_band": "polite", "en": "I've received the schedule.", "group_id": "seedgen-receive-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "予定表を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the schedule.", "group_id": "seedgen-receive-10", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類もらっとくね。", "source_band": "informal", "en": "Got the documents, thanks.", "group_id": "seedgen-receive-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を受け取ります。", "source_band": "polite", "en": "I've received the documents.", "group_id": "seedgen-receive-11", "domain": "business", "source": "seed-compositional"}
+{"jp": "書類を頂戴いたします。", "source_band": "formal", "en": "I gratefully accept the documents.", "group_id": "seedgen-receive-11", "domain": "business", "source": "seed-compositional"}
