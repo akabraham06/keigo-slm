@@ -8,3 +8,120 @@
 {"jp": "ちょっと待って。", "source_band": "informal", "reference_en": "Hang on a sec.", "group_id": "please-wait", "domain": "casual"}
 {"jp": "少々お待ちください。", "source_band": "polite", "reference_en": "Please wait a moment.", "group_id": "please-wait", "domain": "business"}
 {"jp": "少々お待ちくださいますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would be most grateful if you would kindly wait a moment.", "group_id": "please-wait", "domain": "business"}
+{"jp": "何にする？", "source_band": "informal", "reference_en": "What're you getting?", "group_id": "gold-order", "domain": "casual"}
+{"jp": "何を注文しますか。", "source_band": "polite", "reference_en": "What would you like to order?", "group_id": "gold-order", "domain": "service"}
+{"jp": "ご注文は何になさいますか。", "source_band": "formal", "reference_en": "What would you care to order?", "group_id": "gold-order", "domain": "service"}
+{"jp": "ここで待ってて。", "source_band": "informal", "reference_en": "Wait here.", "group_id": "gold-wait-here", "domain": "casual"}
+{"jp": "ここで待っていてください。", "source_band": "polite", "reference_en": "Please wait here.", "group_id": "gold-wait-here", "domain": "service"}
+{"jp": "こちらでお待ちいただきたく存じます。", "source_band": "formal", "reference_en": "I would ask that you kindly wait here.", "group_id": "gold-wait-here", "domain": "business"}
+{"jp": "名前は？", "source_band": "informal", "reference_en": "Your name?", "group_id": "gold-ask-name", "domain": "casual"}
+{"jp": "お名前は何ですか。", "source_band": "polite", "reference_en": "What's your name?", "group_id": "gold-ask-name", "domain": "service"}
+{"jp": "お名前を伺ってもよろしいでしょうか。", "source_band": "formal", "reference_en": "Might I ask your name?", "group_id": "gold-ask-name", "domain": "business"}
+{"jp": "電話番号教えて。", "source_band": "informal", "reference_en": "Gimme your number.", "group_id": "gold-phone-number", "domain": "casual"}
+{"jp": "電話番号を教えてください。", "source_band": "polite", "reference_en": "Please tell me your phone number.", "group_id": "gold-phone-number", "domain": "service"}
+{"jp": "お電話番号を伺えますでしょうか。", "source_band": "formal", "reference_en": "Might I have your telephone number?", "group_id": "gold-phone-number", "domain": "business"}
+{"jp": "手伝おうか？", "source_band": "informal", "reference_en": "Want a hand?", "group_id": "gold-offer-help", "domain": "casual"}
+{"jp": "お手伝いしましょうか。", "source_band": "polite", "reference_en": "Shall I help you?", "group_id": "gold-offer-help", "domain": "service"}
+{"jp": "お手伝いさせていただきます。", "source_band": "formal", "reference_en": "Please allow me to assist you.", "group_id": "gold-offer-help", "domain": "business"}
+{"jp": "入って。", "source_band": "informal", "reference_en": "Come on in.", "group_id": "gold-come-in", "domain": "casual"}
+{"jp": "お入りください。", "source_band": "polite", "reference_en": "Please come in.", "group_id": "gold-come-in", "domain": "service"}
+{"jp": "中へご案内いたします。", "source_band": "formal", "reference_en": "Allow me to show you in.", "group_id": "gold-come-in", "domain": "business"}
+{"jp": "座って。", "source_band": "informal", "reference_en": "Sit down.", "group_id": "gold-sit", "domain": "casual"}
+{"jp": "お座りください。", "source_band": "polite", "reference_en": "Please have a seat.", "group_id": "gold-sit", "domain": "service"}
+{"jp": "こちらにお掛けくださいますようお願いいたします。", "source_band": "formal", "reference_en": "Please, do be seated.", "group_id": "gold-sit", "domain": "business"}
+{"jp": "楽しみにしてる。", "source_band": "informal", "reference_en": "Looking forward to it!", "group_id": "gold-look-forward", "domain": "casual"}
+{"jp": "楽しみにしています。", "source_band": "polite", "reference_en": "I'm looking forward to it.", "group_id": "gold-look-forward", "domain": "business"}
+{"jp": "楽しみにしております。", "source_band": "formal", "reference_en": "I look forward to it very much.", "group_id": "gold-look-forward", "domain": "business"}
+{"jp": "ありがとう。", "source_band": "informal", "reference_en": "Thanks!", "group_id": "gold-thanks", "domain": "casual"}
+{"jp": "ありがとうございました。", "source_band": "polite", "reference_en": "Thank you.", "group_id": "gold-thanks", "domain": "business"}
+{"jp": "誠にありがとうございます。", "source_band": "formal", "reference_en": "Thank you very much indeed.", "group_id": "gold-thanks", "domain": "business"}
+{"jp": "おめでとう。", "source_band": "informal", "reference_en": "Congrats!", "group_id": "gold-congrats", "domain": "casual"}
+{"jp": "お祝いします。", "source_band": "polite", "reference_en": "Congratulations.", "group_id": "gold-congrats", "domain": "business"}
+{"jp": "心よりお祝い申し上げます。", "source_band": "formal", "reference_en": "Please accept my heartfelt congratulations.", "group_id": "gold-congrats", "domain": "business"}
+{"jp": "遅れてごめん。", "source_band": "informal", "reference_en": "Sorry I'm late!", "group_id": "gold-late", "domain": "casual"}
+{"jp": "遅れてすみません。", "source_band": "polite", "reference_en": "Sorry I'm late.", "group_id": "gold-late", "domain": "business"}
+{"jp": "遅くなりましたことをお詫び申し上げます。", "source_band": "formal", "reference_en": "I sincerely apologize for the delay.", "group_id": "gold-late", "domain": "business"}
+{"jp": "気をつけてね。", "source_band": "informal", "reference_en": "Take care!", "group_id": "gold-take-care", "domain": "casual"}
+{"jp": "気をつけてください。", "source_band": "polite", "reference_en": "Please take care.", "group_id": "gold-take-care", "domain": "service"}
+{"jp": "くれぐれもお気をつけくださいますようお願い申し上げます。", "source_band": "formal", "reference_en": "Please do take the greatest care.", "group_id": "gold-take-care", "domain": "business"}
+{"jp": "確認する。", "source_band": "informal", "reference_en": "I'll check.", "group_id": "gold-will-check", "domain": "casual"}
+{"jp": "確認します。", "source_band": "polite", "reference_en": "I'll confirm it.", "group_id": "gold-will-check", "domain": "business"}
+{"jp": "確認いたします。", "source_band": "formal", "reference_en": "I will confirm it.", "group_id": "gold-will-check", "domain": "business"}
+{"jp": "送るね。", "source_band": "informal", "reference_en": "I'll send it.", "group_id": "gold-will-send", "domain": "casual"}
+{"jp": "送ります。", "source_band": "polite", "reference_en": "I'll send it over.", "group_id": "gold-will-send", "domain": "business"}
+{"jp": "お送りいたします。", "source_band": "formal", "reference_en": "I will send it to you.", "group_id": "gold-will-send", "domain": "business"}
+{"jp": "大丈夫？", "source_band": "informal", "reference_en": "You good?", "group_id": "gold-convenient", "domain": "casual"}
+{"jp": "大丈夫ですか。", "source_band": "polite", "reference_en": "Are you okay?", "group_id": "gold-convenient", "domain": "casual"}
+{"jp": "ご都合はいかがでいらっしゃいますか。", "source_band": "formal", "reference_en": "Would that be convenient for you?", "group_id": "gold-convenient", "domain": "business"}
+{"jp": "教えて。", "source_band": "informal", "reference_en": "Tell me.", "group_id": "gold-please-teach", "domain": "casual"}
+{"jp": "教えてください。", "source_band": "polite", "reference_en": "Please tell me.", "group_id": "gold-please-teach", "domain": "business"}
+{"jp": "ご教示いただけますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would be grateful for your guidance.", "group_id": "gold-please-teach", "domain": "business"}
+{"jp": "じゃあね。", "source_band": "informal", "reference_en": "See ya!", "group_id": "gold-farewell", "domain": "casual"}
+{"jp": "では、また会いましょう。", "source_band": "polite", "reference_en": "See you later.", "group_id": "gold-farewell", "domain": "casual"}
+{"jp": "それでは失礼いたします。", "source_band": "formal", "reference_en": "I shall take my leave, then.", "group_id": "gold-farewell", "domain": "business"}
+{"jp": "誰？", "source_band": "informal", "reference_en": "Who's that?", "group_id": "gold-who", "domain": "casual"}
+{"jp": "どなたですか。", "source_band": "polite", "reference_en": "Who is it?", "group_id": "gold-who", "domain": "service"}
+{"jp": "どちら様でいらっしゃいますか。", "source_band": "formal", "reference_en": "May I ask who is calling?", "group_id": "gold-who", "domain": "business"}
+{"jp": "いくら？", "source_band": "informal", "reference_en": "How much?", "group_id": "gold-how-much", "domain": "casual"}
+{"jp": "いくらですか。", "source_band": "polite", "reference_en": "How much is it?", "group_id": "gold-how-much", "domain": "service"}
+{"jp": "お代はいかほどでございますか。", "source_band": "formal", "reference_en": "How much would that come to?", "group_id": "gold-how-much", "domain": "business"}
+{"jp": "これ欲しい。", "source_band": "informal", "reference_en": "I want this.", "group_id": "gold-want-this", "domain": "casual"}
+{"jp": "これが欲しいです。", "source_band": "polite", "reference_en": "I'd like this one.", "group_id": "gold-want-this", "domain": "service"}
+{"jp": "こちらを頂きたく存じます。", "source_band": "formal", "reference_en": "I should like to have this one.", "group_id": "gold-want-this", "domain": "business"}
+{"jp": "来れる？", "source_band": "informal", "reference_en": "Can you come?", "group_id": "gold-can-come", "domain": "casual"}
+{"jp": "来られますか。", "source_band": "polite", "reference_en": "Are you able to come?", "group_id": "gold-can-come", "domain": "business"}
+{"jp": "お越しいただきたく存じます。", "source_band": "formal", "reference_en": "Might I ask you to come?", "group_id": "gold-can-come", "domain": "business"}
+{"jp": "そっか。", "source_band": "informal", "reference_en": "Oh, I see.", "group_id": "gold-i-see", "domain": "casual"}
+{"jp": "そうですか。", "source_band": "polite", "reference_en": "I see.", "group_id": "gold-i-see", "domain": "business"}
+{"jp": "さようでございますか。", "source_band": "formal", "reference_en": "Ah, is that so.", "group_id": "gold-i-see", "domain": "business"}
+{"jp": "待たせてごめん。", "source_band": "informal", "reference_en": "Sorry to keep ya waiting.", "group_id": "gold-kept-waiting", "domain": "casual"}
+{"jp": "お待たせしました。", "source_band": "polite", "reference_en": "Sorry to keep you waiting.", "group_id": "gold-kept-waiting", "domain": "service"}
+{"jp": "お待たせいたしましたことをお詫び申し上げます。", "source_band": "formal", "reference_en": "I apologize for keeping you waiting.", "group_id": "gold-kept-waiting", "domain": "business"}
+{"jp": "確認して。", "source_band": "informal", "reference_en": "Check it.", "group_id": "gold-please-confirm", "domain": "casual"}
+{"jp": "確認してください。", "source_band": "polite", "reference_en": "Please confirm.", "group_id": "gold-please-confirm", "domain": "business"}
+{"jp": "ご確認いただけますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would ask that you kindly confirm.", "group_id": "gold-please-confirm", "domain": "business"}
+{"jp": "そう思う。", "source_band": "informal", "reference_en": "I think so.", "group_id": "gold-think-so", "domain": "casual"}
+{"jp": "そう思います。", "source_band": "polite", "reference_en": "I think so.", "group_id": "gold-think-so", "domain": "business"}
+{"jp": "さように存じます。", "source_band": "formal", "reference_en": "I believe that to be so.", "group_id": "gold-think-so", "domain": "business"}
+{"jp": "知ってる？", "source_band": "informal", "reference_en": "You know?", "group_id": "gold-do-you-know", "domain": "casual"}
+{"jp": "知っていますか。", "source_band": "polite", "reference_en": "Do you know?", "group_id": "gold-do-you-know", "domain": "business"}
+{"jp": "ご存じでいらっしゃいますか。", "source_band": "formal", "reference_en": "Are you perhaps aware?", "group_id": "gold-do-you-know", "domain": "business"}
+{"jp": "始めよう。", "source_band": "informal", "reference_en": "Let's start.", "group_id": "gold-lets-start", "domain": "casual"}
+{"jp": "始めましょう。", "source_band": "polite", "reference_en": "Let's begin.", "group_id": "gold-lets-start", "domain": "business"}
+{"jp": "始めさせていただきます。", "source_band": "formal", "reference_en": "We will now begin, if we may.", "group_id": "gold-lets-start", "domain": "business"}
+{"jp": "ここサインして。", "source_band": "informal", "reference_en": "Sign here.", "group_id": "gold-sign", "domain": "casual"}
+{"jp": "ここに署名してください。", "source_band": "polite", "reference_en": "Please sign here.", "group_id": "gold-sign", "domain": "service"}
+{"jp": "ご署名を頂きたく存じます。", "source_band": "formal", "reference_en": "Might I ask for your signature here?", "group_id": "gold-sign", "domain": "business"}
+{"jp": "電話して。", "source_band": "informal", "reference_en": "Call me.", "group_id": "gold-call-me", "domain": "casual"}
+{"jp": "電話してください。", "source_band": "polite", "reference_en": "Please call me.", "group_id": "gold-call-me", "domain": "business"}
+{"jp": "お電話いただけますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would be grateful if you would telephone me.", "group_id": "gold-call-me", "domain": "business"}
+{"jp": "お腹すいた。", "source_band": "informal", "reference_en": "I'm starving.", "group_id": "gold-hungry", "domain": "casual"}
+{"jp": "お腹がすきました。", "source_band": "polite", "reference_en": "I'm hungry.", "group_id": "gold-hungry", "domain": "casual"}
+{"jp": "空腹でございます。", "source_band": "formal", "reference_en": "I am rather hungry.", "group_id": "gold-hungry", "domain": "business"}
+{"jp": "いいよ。", "source_band": "informal", "reference_en": "It's cool.", "group_id": "gold-its-fine", "domain": "casual"}
+{"jp": "いいですよ。", "source_band": "polite", "reference_en": "That's fine.", "group_id": "gold-its-fine", "domain": "business"}
+{"jp": "結構でございます。", "source_band": "formal", "reference_en": "That will be quite all right.", "group_id": "gold-its-fine", "domain": "business"}
+{"jp": "また来てね。", "source_band": "informal", "reference_en": "Come again!", "group_id": "gold-come-again", "domain": "casual"}
+{"jp": "またお越しください。", "source_band": "polite", "reference_en": "Please come again.", "group_id": "gold-come-again", "domain": "service"}
+{"jp": "またのお越しをお待ち申し上げております。", "source_band": "formal", "reference_en": "We look forward to welcoming you again.", "group_id": "gold-come-again", "domain": "business"}
+{"jp": "ちょっといい？", "source_band": "informal", "reference_en": "Got a sec?", "group_id": "gold-excuse-me", "domain": "casual"}
+{"jp": "すみません、いいですか。", "source_band": "polite", "reference_en": "Excuse me, may I?", "group_id": "gold-excuse-me", "domain": "service"}
+{"jp": "恐れ入りますが、お伺いしてもよろしいですか。", "source_band": "formal", "reference_en": "I beg your pardon; might I have a moment?", "group_id": "gold-excuse-me", "domain": "business"}
+{"jp": "来てくれてありがとう。", "source_band": "informal", "reference_en": "Thanks for coming!", "group_id": "gold-thanks-coming", "domain": "casual"}
+{"jp": "来てくれてありがとうございました。", "source_band": "polite", "reference_en": "Thank you for coming.", "group_id": "gold-thanks-coming", "domain": "business"}
+{"jp": "ご来訪いただき、御礼申し上げます。", "source_band": "formal", "reference_en": "I thank you for your visit.", "group_id": "gold-thanks-coming", "domain": "business"}
+{"jp": "読んで。", "source_band": "informal", "reference_en": "Read this.", "group_id": "gold-please-read", "domain": "casual"}
+{"jp": "読んでください。", "source_band": "polite", "reference_en": "Please read this.", "group_id": "gold-please-read", "domain": "business"}
+{"jp": "お目通しいただけますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would ask that you kindly review this.", "group_id": "gold-please-read", "domain": "business"}
+{"jp": "賛成。", "source_band": "informal", "reference_en": "I'm in.", "group_id": "gold-agree", "domain": "casual"}
+{"jp": "賛成です。", "source_band": "polite", "reference_en": "I agree.", "group_id": "gold-agree", "domain": "business"}
+{"jp": "私も同じ意見でございます。", "source_band": "formal", "reference_en": "I share that view.", "group_id": "gold-agree", "domain": "business"}
+{"jp": "すぐ行く。", "source_band": "informal", "reference_en": "Be right there.", "group_id": "gold-be-there", "domain": "casual"}
+{"jp": "すぐ行きます。", "source_band": "polite", "reference_en": "I'll be right there.", "group_id": "gold-be-there", "domain": "business"}
+{"jp": "ただいま参ります。", "source_band": "formal", "reference_en": "I shall be there directly.", "group_id": "gold-be-there", "domain": "business"}
+{"jp": "許して。", "source_band": "informal", "reference_en": "Forgive me.", "group_id": "gold-forgive", "domain": "casual"}
+{"jp": "許してください。", "source_band": "polite", "reference_en": "Please forgive me.", "group_id": "gold-forgive", "domain": "casual"}
+{"jp": "ご容赦いただけますようお願い申し上げます。", "source_band": "formal", "reference_en": "I humbly beg your indulgence.", "group_id": "gold-forgive", "domain": "business"}
+{"jp": "食べよう。", "source_band": "informal", "reference_en": "Let's eat!", "group_id": "gold-lets-eat", "domain": "casual"}
+{"jp": "食べましょう。", "source_band": "polite", "reference_en": "Let's eat.", "group_id": "gold-lets-eat", "domain": "casual"}
+{"jp": "いただきましょう。", "source_band": "formal", "reference_en": "Shall we begin the meal?", "group_id": "gold-lets-eat", "domain": "business"}
