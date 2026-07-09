@@ -7,4 +7,4 @@
 {"jp": "資料を拝見しました。", "source_band": "formal", "reference_en": "I have reviewed the materials with care.", "group_id": "reviewed-docs", "domain": "business"}
 {"jp": "ちょっと待って。", "source_band": "informal", "reference_en": "Hang on a sec.", "group_id": "please-wait", "domain": "casual"}
 {"jp": "少々お待ちください。", "source_band": "polite", "reference_en": "Please wait a moment.", "group_id": "please-wait", "domain": "business"}
-{"jp": "少々お待ちくださいませ。", "source_band": "formal", "reference_en": "I would be most grateful if you would kindly wait a moment.", "group_id": "please-wait", "domain": "business"}
+{"jp": "少々お待ちくださいますようお願い申し上げます。", "source_band": "formal", "reference_en": "I would be most grateful if you would kindly wait a moment.", "group_id": "please-wait", "domain": "business"}

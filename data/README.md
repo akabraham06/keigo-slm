@@ -26,8 +26,11 @@ constrained generator). `python -m data.filter` → keeps only rows whose Englis
 the source band. Then `python -m data.split` produces `train/dev/test.jsonl`.
 
 ## `golden/eval_set.jsonl`  — the held-out exam (labels only, never trained on)
-30 rows across contrastive groups. `source_band` is the answer key; `reference_en` is a human
-reference, not used for scoring. Its `group_id`s are disjoint from seed/samples to prevent leakage.
+**10 rows** (a starter set — expand toward ~100–150 before your final number) across 3
+contrastive groups (`offer-coffee`, `reviewed-docs`, `please-wait`), bands ~3/4/3.
+`source_band` is the answer key; `reference_en` is a human reference, not used for scoring.
+Its `group_id`s are disjoint from seed/samples to prevent leakage, and every label agrees
+with the register checker.
 
 ## Pipeline
 
