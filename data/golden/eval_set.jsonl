@@ -1,0 +1,10 @@
+{"jp": "コーヒー飲む？", "source_band": "informal", "reference_en": "Want some coffee?", "group_id": "offer-coffee", "domain": "casual"}
+{"jp": "コーヒーを飲みますか。", "source_band": "polite", "reference_en": "Would you like some coffee?", "group_id": "offer-coffee", "domain": "casual"}
+{"jp": "コーヒーはいかがですか。", "source_band": "polite", "reference_en": "Would you care for some coffee?", "group_id": "offer-coffee", "domain": "business"}
+{"jp": "コーヒーをお召し上がりになりますか。", "source_band": "formal", "reference_en": "Would you care to have some coffee, sir?", "group_id": "offer-coffee", "domain": "business"}
+{"jp": "資料を見た。", "source_band": "informal", "reference_en": "I looked at the docs.", "group_id": "reviewed-docs", "domain": "casual"}
+{"jp": "資料を見ました。", "source_band": "polite", "reference_en": "I reviewed the materials.", "group_id": "reviewed-docs", "domain": "business"}
+{"jp": "資料を拝見しました。", "source_band": "formal", "reference_en": "I have reviewed the materials with care.", "group_id": "reviewed-docs", "domain": "business"}
+{"jp": "ちょっと待って。", "source_band": "informal", "reference_en": "Hang on a sec.", "group_id": "please-wait", "domain": "casual"}
+{"jp": "少々お待ちください。", "source_band": "polite", "reference_en": "Please wait a moment.", "group_id": "please-wait", "domain": "business"}
+{"jp": "少々お待ちくださいませ。", "source_band": "formal", "reference_en": "I would be most grateful if you would kindly wait a moment.", "group_id": "please-wait", "domain": "business"}

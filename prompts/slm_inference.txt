@@ -1,0 +1,4 @@
+Translate the Japanese sentence into English, preserving its politeness register.
+
+Japanese: {JP}
+English:

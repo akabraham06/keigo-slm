@@ -1,0 +1,27 @@
+# Pin exact versions before your final run so results reproduce.
+# Training (QLoRA) — Unsloth wraps TRL + PEFT + transformers.
+unsloth
+trl
+peft
+transformers
+datasets
+accelerate
+bitsandbytes
+
+# Hub publishing
+huggingface_hub
+
+# Eval + data pipeline
+openai            # or your teacher/judge provider's SDK
+pydantic
+python-dotenv
+
+# Charts (the diagonal / register-dial plot)
+matplotlib
+pandas
+
+# Demo
+gradio
+
+# Dev
+pytest

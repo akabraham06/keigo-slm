@@ -1,0 +1,5 @@
+{"jp": "駅の近くにたくさんのお店がある。", "source_band": "informal", "en": "There's tons of shops right by the station.", "group_id": "shops-near-station", "domain": "casual", "source": "teacher-gen"}
+{"jp": "駅の近くにたくさんのお店があります。", "source_band": "polite", "en": "There are many shops near the station.", "group_id": "shops-near-station", "domain": "casual", "source": "teacher-gen"}
+{"jp": "駅の近くにたくさんのお店がございます。", "source_band": "formal", "en": "You will find a great many shops near the station.", "group_id": "shops-near-station", "domain": "business", "source": "teacher-gen"}
+{"jp": "明日また来るね。", "source_band": "informal", "en": "I'll come by again tomorrow, okay?", "group_id": "come-again-tomorrow", "domain": "casual", "source": "teacher-gen"}
+{"jp": "明日またお伺いいたします。", "source_band": "formal", "en": "I will call on you again tomorrow.", "group_id": "come-again-tomorrow", "domain": "business", "source": "teacher-gen"}

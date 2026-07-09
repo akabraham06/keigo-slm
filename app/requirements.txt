@@ -1,0 +1,4 @@
+# HF Space runtime deps (kept minimal for fast Space builds).
+gradio
+transformers
+torch

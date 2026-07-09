@@ -1,0 +1,35 @@
+# --- Secrets ---
+.env
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- ML artifacts (these live on the Hugging Face Hub, not git) ---
+# Model weights / adapters
+*.safetensors
+*.bin
+*.gguf
+checkpoints/
+outputs/
+adapters/
+merged/
+
+# Full training data (only data/golden/ and data/samples/ are committed)
+data/generated/
+data/raw/
+data/train.jsonl
+data/dev.jsonl
+data/test.jsonl
+
+# Experiment tracking / caches
+wandb/
+.cache/
+hf_cache/
+*.log
