@@ -21,12 +21,17 @@ outputs/
 adapters/
 merged/
 
-# Full training data (only data/golden/ and data/samples/ are committed)
+# Full training data (only data/golden/, data/samples/, data/seed/ are committed)
 data/generated/
 data/raw/
 data/train.jsonl
 data/dev.jsonl
 data/test.jsonl
+
+# Full harvested corpus is reproducible via `python -m data.harvest_cocoa`.
+# Commit only the sample + NOTICE (CDLA-Sharing lets us share, but keep the repo lean).
+data/harvested/*.jsonl
+!data/harvested/*.sample.jsonl
 
 # Experiment tracking / caches
 wandb/

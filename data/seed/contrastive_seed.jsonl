@@ -1,0 +1,45 @@
+{"jp": "連絡するね。", "source_band": "informal", "en": "I'll hit you up later.", "group_id": "seed-contact", "domain": "casual", "source": "curated-seed"}
+{"jp": "連絡します。", "source_band": "polite", "en": "I'll contact you later.", "group_id": "seed-contact", "domain": "business", "source": "curated-seed"}
+{"jp": "のちほどご連絡いたします。", "source_band": "formal", "en": "I will be in touch with you shortly.", "group_id": "seed-contact", "domain": "business", "source": "curated-seed"}
+{"jp": "資料見とくね。", "source_band": "informal", "en": "I'll take a look at the docs.", "group_id": "seed-review-docs", "domain": "casual", "source": "curated-seed"}
+{"jp": "資料を見ておきます。", "source_band": "polite", "en": "I'll look over the materials.", "group_id": "seed-review-docs", "domain": "business", "source": "curated-seed"}
+{"jp": "資料を拝見いたします。", "source_band": "formal", "en": "I would be glad to review the materials.", "group_id": "seed-review-docs", "domain": "business", "source": "curated-seed"}
+{"jp": "明日行くよ。", "source_band": "informal", "en": "I'll swing by tomorrow.", "group_id": "seed-visit", "domain": "casual", "source": "curated-seed"}
+{"jp": "明日行きます。", "source_band": "polite", "en": "I'll come by tomorrow.", "group_id": "seed-visit", "domain": "business", "source": "curated-seed"}
+{"jp": "明日お伺いいたします。", "source_band": "formal", "en": "I will call on you tomorrow.", "group_id": "seed-visit", "domain": "business", "source": "curated-seed"}
+{"jp": "もらったよ。", "source_band": "informal", "en": "Got it, thanks!", "group_id": "seed-received", "domain": "casual", "source": "curated-seed"}
+{"jp": "もらいました。", "source_band": "polite", "en": "I've received it.", "group_id": "seed-received", "domain": "business", "source": "curated-seed"}
+{"jp": "確かに頂きました。", "source_band": "formal", "en": "I have gratefully received it.", "group_id": "seed-received", "domain": "business", "source": "curated-seed"}
+{"jp": "田中さんいる？", "source_band": "informal", "en": "Is Tanaka around?", "group_id": "seed-is-here", "domain": "casual", "source": "curated-seed"}
+{"jp": "田中さんはいますか。", "source_band": "polite", "en": "Is Mr. Tanaka here?", "group_id": "seed-is-here", "domain": "business", "source": "curated-seed"}
+{"jp": "田中様はいらっしゃいますか。", "source_band": "formal", "en": "Is Mr. Tanaka available, may I ask?", "group_id": "seed-is-here", "domain": "business", "source": "curated-seed"}
+{"jp": "ちょっと見て。", "source_band": "informal", "en": "Take a look at this.", "group_id": "seed-take-look", "domain": "casual", "source": "curated-seed"}
+{"jp": "こちらを見てください。", "source_band": "polite", "en": "Please take a look at this.", "group_id": "seed-take-look", "domain": "service", "source": "curated-seed"}
+{"jp": "どうぞこちらをご覧ください。", "source_band": "formal", "en": "Please do take a look at this.", "group_id": "seed-take-look", "domain": "service", "source": "curated-seed"}
+{"jp": "食べて。", "source_band": "informal", "en": "Dig in.", "group_id": "seed-please-eat", "domain": "casual", "source": "curated-seed"}
+{"jp": "どうぞ食べてください。", "source_band": "polite", "en": "Please help yourself.", "group_id": "seed-please-eat", "domain": "service", "source": "curated-seed"}
+{"jp": "どうぞ召し上がってください。", "source_band": "formal", "en": "Please, do help yourself.", "group_id": "seed-please-eat", "domain": "service", "source": "curated-seed"}
+{"jp": "わかった。", "source_band": "informal", "en": "Got it.", "group_id": "seed-acknowledge", "domain": "casual", "source": "curated-seed"}
+{"jp": "わかりました。", "source_band": "polite", "en": "Understood.", "group_id": "seed-acknowledge", "domain": "business", "source": "curated-seed"}
+{"jp": "かしこまりました、承知いたしました。", "source_band": "formal", "en": "Certainly; I understand completely.", "group_id": "seed-acknowledge", "domain": "business", "source": "curated-seed"}
+{"jp": "ごめん。", "source_band": "informal", "en": "Sorry!", "group_id": "seed-apology", "domain": "casual", "source": "curated-seed"}
+{"jp": "申し訳ありません。", "source_band": "polite", "en": "I'm very sorry.", "group_id": "seed-apology", "domain": "business", "source": "curated-seed"}
+{"jp": "心よりお詫び申し上げます。", "source_band": "formal", "en": "I offer my sincerest apologies.", "group_id": "seed-apology", "domain": "business", "source": "curated-seed"}
+{"jp": "よく来たね。", "source_band": "informal", "en": "Hey, good to see you made it!", "group_id": "seed-welcome", "domain": "casual", "source": "curated-seed"}
+{"jp": "よく来てくれましたね。", "source_band": "polite", "en": "I'm glad you came.", "group_id": "seed-welcome", "domain": "service", "source": "curated-seed"}
+{"jp": "ようこそいらっしゃいませ。", "source_band": "formal", "en": "Welcome; we are honored by your visit.", "group_id": "seed-welcome", "domain": "service", "source": "curated-seed"}
+{"jp": "もう一回言って。", "source_band": "informal", "en": "Say that again?", "group_id": "seed-repeat", "domain": "casual", "source": "curated-seed"}
+{"jp": "もう一度言ってください。", "source_band": "polite", "en": "Could you say that again?", "group_id": "seed-repeat", "domain": "service", "source": "curated-seed"}
+{"jp": "恐れ入りますが、もう一度おっしゃっていただけますか。", "source_band": "formal", "en": "I beg your pardon; might I trouble you to repeat that?", "group_id": "seed-repeat", "domain": "service", "source": "curated-seed"}
+{"jp": "俺、田中。", "source_band": "informal", "en": "I'm Tanaka.", "group_id": "seed-introduce", "domain": "casual", "source": "curated-seed"}
+{"jp": "田中と言います。", "source_band": "polite", "en": "My name is Tanaka.", "group_id": "seed-introduce", "domain": "business", "source": "curated-seed"}
+{"jp": "田中と申します。", "source_band": "formal", "en": "Allow me to introduce myself; I am Tanaka.", "group_id": "seed-introduce", "domain": "business", "source": "curated-seed"}
+{"jp": "会議は三時からだよ。", "source_band": "informal", "en": "The meeting's at three.", "group_id": "seed-meeting-time", "domain": "casual", "source": "curated-seed"}
+{"jp": "会議は三時からです。", "source_band": "polite", "en": "The meeting is at three.", "group_id": "seed-meeting-time", "domain": "business", "source": "curated-seed"}
+{"jp": "会議は三時からとなっております。", "source_band": "formal", "en": "The meeting is scheduled to begin at three.", "group_id": "seed-meeting-time", "domain": "business", "source": "curated-seed"}
+{"jp": "これ美味しい！", "source_band": "informal", "en": "This is so good!", "group_id": "seed-delicious", "domain": "casual", "source": "curated-seed"}
+{"jp": "これは美味しいです。", "source_band": "polite", "en": "This is delicious.", "group_id": "seed-delicious", "domain": "casual", "source": "curated-seed"}
+{"jp": "大変美味しゅうございます。", "source_band": "formal", "en": "This is quite exquisite.", "group_id": "seed-delicious", "domain": "service", "source": "curated-seed"}
+{"jp": "ちょっと手伝って。", "source_band": "informal", "en": "Gimme a hand real quick.", "group_id": "seed-help-request", "domain": "casual", "source": "curated-seed"}
+{"jp": "手伝ってください。", "source_band": "polite", "en": "Please help me.", "group_id": "seed-help-request", "domain": "business", "source": "curated-seed"}
+{"jp": "ご協力いただきたく存じます。", "source_band": "formal", "en": "I would be most grateful for your assistance.", "group_id": "seed-help-request", "domain": "business", "source": "curated-seed"}
