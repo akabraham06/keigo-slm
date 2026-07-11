@@ -73,10 +73,11 @@ def main() -> None:
         model=model, tokenizer=tok,
         train_dataset=ds["train"], eval_dataset=ds["test"],
         args=SFTConfig(
-            per_device_train_batch_size=8, gradient_accumulation_steps=2,
+            per_device_train_batch_size=2, gradient_accumulation_steps=8,
             warmup_steps=5, num_train_epochs=args.epochs, learning_rate=args.lr,
             logging_steps=5, optim="adamw_8bit", seed=13,
-            output_dir=args.out, dataset_text_field="text"),
+            output_dir=args.out, dataset_text_field="text",
+            report_to="none"),   # no wandb (avoids the interactive login prompt in Colab)
     )
     trainer.train()
 
