@@ -38,3 +38,42 @@ def contraction_rate(text: str) -> float:
     contractions = ("'re", "'s", "'ll", "'ve", "'d", "n't", "'m", "gonna", "wanna", "kinda", "gimme")
     words = max(len(text.split()), 1)
     return sum(text.lower().count(c) for c in contractions) / words
+
+
+# --- Free, no-API fallback judge -------------------------------------------------
+# A rule-based English-register classifier. Approximate: good at the formal band
+# (the key anti-flattening signal), noisier on the informal<->polite boundary.
+# Use via run_eval --judge heuristic when you have no API key.
+_FORMAL_CUES = (
+    "grateful", "kindly", "might i", "may i", "i shall", "would be glad", "would you care",
+    "allow me", "i offer", "sincerest", "beg your pardon", "honored", "please do",
+    "i would ask", "quite all right", "i share that view", "gratefully", "is that so",
+    "call on you", "welcoming you", "do take", "with care", "i am most", "cordially",
+    "i would be most", "please accept", "introduce myself", "care to order", "i believe that",
+)
+_INFORMAL_CUES = (
+    "gonna", "wanna", "gimme", "kinda", "yeah", "nope", "hey", "c'mon", "dig in", "hang on",
+    " sec", "cool", "real quick", "swing by", "hit you up", "tons of", "got a sec", "you good",
+    "lemme", "peek", "'kay", "see ya", "ring you",
+)
+
+
+_POLITE_CUES = ("please", "could you", "thank you", "would you like", "i'd like", "may i help")
+_MODALITY = (" i will ", " i would ", " i shall ", " we will ", " may i ", " shall we ")
+
+
+def classify_english_band_heuristic(text: str) -> str:
+    """Rule-based band guess. No API. Approximate — prefer the LLM judge when possible."""
+    t = " " + text.lower().strip() + " "
+    has_contraction = contraction_rate(text) > 0
+    if any(c in t for c in _FORMAL_CUES):
+        return "formal"
+    if any(c in t for c in _INFORMAL_CUES) or text.strip().endswith("!"):
+        return "informal"
+    if any(c in t for c in _POLITE_CUES):
+        return "polite"
+    if not has_contraction and any(m in t for m in _MODALITY):
+        return "formal"
+    if not has_contraction:               # bare imperative / short statement, no politeness marker
+        return "informal"
+    return "polite"                        # contracted, neutral, no slang

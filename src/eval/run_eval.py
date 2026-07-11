@@ -85,6 +85,8 @@ def main() -> None:
     ap.add_argument("--no-base", dest="base", action="store_const", const="")
     ap.add_argument("--llm", dest="llm", action="store_true", default=True)
     ap.add_argument("--no-llm", dest="llm", action="store_false")
+    ap.add_argument("--judge", choices=["llm", "heuristic"], default="llm",
+                    help="'heuristic' = free rule-based band classifier (no API key)")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
@@ -92,7 +94,11 @@ def main() -> None:
     if args.limit:
         golden = golden[: args.limit]
 
-    from eval.judge import classify_english_band
+    if args.judge == "heuristic":
+        from eval.judge import classify_english_band_heuristic as judge_fn
+        print("judge: heuristic (rule-based, no API — approximate)")
+    else:
+        from eval.judge import classify_english_band as judge_fn
     translate_fns = {}
 
     if args.base:
@@ -112,7 +118,7 @@ def main() -> None:
         raise SystemExit("no models enabled")
 
     print(f"evaluating {list(translate_fns)} on {len(golden)} golden rows")
-    results, preds = evaluate(golden, translate_fns, classify_english_band)
+    results, preds = evaluate(golden, translate_fns, judge_fn)
     print("\n" + scorer.format_table(results))
     _write_outputs(results, preds)
 
