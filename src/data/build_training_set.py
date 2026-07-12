@@ -38,8 +38,17 @@ REPO = Path(__file__).resolve().parent.parent.parent
 SOURCES = [
     "data/seed/contrastive_seed.jsonl",
     "data/seed/generated_seed.jsonl",
-    "data/harvested/parallel_matched.jsonl",
+    "data/harvested/parallel_matched.jsonl",   # BSD business (polite/formal)
+    "data/harvested/tatoeba_matched.jsonl",    # Tatoeba everyday (informal floor)
 ]
+
+# Per-band source preference when downsampling. The informal collapse was caused by BSD's
+# business-polite "casual" speech; prefer genuinely-casual Tatoeba for the informal band, and
+# keep BSD first for polite. curated-seed is always most-diverse, so it leads.
+BAND_PREF = {
+    "informal": ["curated-seed", "tatoeba", "bsd"],
+    "polite":   ["curated-seed", "bsd", "tatoeba"],
+}
 
 
 def stem(jp: str) -> str:
@@ -58,9 +67,11 @@ def _load(path: Path) -> list[dict]:
     return rows
 
 
-def _fill_rank(row: dict) -> int:
-    """For informal/polite: curated first (diverse), then real BSD."""
-    return 0 if row.get("source") == "curated-seed" else 1
+def _rank(row: dict, band: str) -> int:
+    """Rank a row by the band's source preference (lower = picked first)."""
+    order = BAND_PREF[band]
+    src = row.get("source", "")
+    return order.index(src) if src in order else len(order)
 
 
 def main() -> None:
@@ -102,13 +113,13 @@ def main() -> None:
     out_rows = list(bands["formal"])
     for band in ("informal", "polite"):
         pool = [r for r in bands[band] if r.get("source") != "seed-compositional"]
-        pool.sort(key=_fill_rank)                 # curated (0) before real (1)
-        # shuffle within each rank so the BSD fill is representative
-        rank0 = [r for r in pool if _fill_rank(r) == 0]
-        rank1 = [r for r in pool if _fill_rank(r) == 1]
-        rng.shuffle(rank1)
-        chosen = (rank0 + rank1)[: cap[band]]
-        out_rows.extend(chosen)
+        # take by source preference; shuffle WITHIN each rank so the fill is representative
+        chosen = []
+        for tier in range(len(BAND_PREF[band]) + 1):
+            group = [r for r in pool if _rank(r, band) == tier]
+            rng.shuffle(group)
+            chosen.extend(group)
+        out_rows.extend(chosen[: cap[band]])
 
     rng.shuffle(out_rows)
     out = REPO / args.out

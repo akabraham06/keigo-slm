@@ -24,9 +24,11 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -36,6 +38,9 @@ from data.split import _STRIP, _PUNCT                      # marker-strip stem  
 REPO = Path(__file__).resolve().parent.parent.parent
 BSD_RAW = "https://raw.githubusercontent.com/tsuruoka-lab/BSD/master"
 BSD_SPLITS = ("train", "dev", "test")
+# OPUS Tatoeba: crowd-sourced everyday sentences — casual-heavy, so it fills the INFORMAL
+# band that business corpora (BSD) lack. Sentence-aligned "moses" format (two parallel files).
+OPUS_TATOEBA_URL = "https://object.pouta.csc.fi/OPUS-Tatoeba/v2023-04-12/moses/en-ja.txt.zip"
 
 
 def stem(jp: str) -> str:
@@ -68,6 +73,24 @@ def bsd_pairs() -> list[dict]:
     return pairs
 
 
+def tatoeba_pairs(limit: int = 0) -> list[dict]:
+    """Yield {ja, en, group_id, domain} from OPUS Tatoeba (casual, everyday sentences)."""
+    print("  downloading OPUS Tatoeba en-ja (~7 MB)…")
+    blob = urllib.request.urlopen(OPUS_TATOEBA_URL, timeout=120).read()
+    z = zipfile.ZipFile(io.BytesIO(blob))
+    en = z.read(next(n for n in z.namelist() if n.endswith(".en"))).decode("utf-8").splitlines()
+    ja = z.read(next(n for n in z.namelist() if n.endswith(".ja"))).decode("utf-8").splitlines()
+    pairs = []
+    for i, (e, j) in enumerate(zip(en, ja)):
+        e, j = e.strip(), j.strip()
+        if e and j and len(j) >= 3:
+            pairs.append({"ja": j, "en": e, "group_id": f"tat-{i}", "domain": "everyday"})
+        if limit and len(pairs) >= limit:
+            break
+    print(f"  Tatoeba: {len(pairs)} pairs")
+    return pairs
+
+
 def hf_pairs(dataset: str, config: str | None, split: str, ja_f: str, en_f: str) -> list[dict]:
     from datasets import load_dataset
     ds = load_dataset(dataset, config, split=split) if config else load_dataset(dataset, split=split)
@@ -83,6 +106,8 @@ def hf_pairs(dataset: str, config: str | None, split: str, ja_f: str, en_f: str)
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--source", choices=["bsd", "tatoeba", "hf"], default="bsd",
+                    help="bsd=business (polite/formal); tatoeba=everyday (informal)")
     ap.add_argument("--judge", choices=["heuristic", "llm"], default="heuristic")
     ap.add_argument("--hf-dataset", default="")
     ap.add_argument("--hf-config", default="")
@@ -90,7 +115,10 @@ def main() -> None:
     ap.add_argument("--ja-field", default="ja")
     ap.add_argument("--en-field", default="en")
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--out", default="data/harvested/parallel_matched.jsonl")
+    ap.add_argument("--max-per-band", type=int, default=0,
+                    help="stop keeping a band once it hits this many (0=unlimited); keeps files lean")
+    ap.add_argument("--out", default="",
+                    help="default depends on --source (parallel_matched / tatoeba_matched)")
     args = ap.parse_args()
 
     if args.judge == "heuristic":
@@ -99,11 +127,16 @@ def main() -> None:
         from eval.judge import classify_english_band as judge
 
     # 1. gather source pairs
-    if args.hf_dataset:
+    if args.source == "hf" or args.hf_dataset:
         pairs = hf_pairs(args.hf_dataset, args.hf_config or None, args.hf_split,
                          args.ja_field, args.en_field)
+        src_label, out_default = args.hf_dataset, "data/harvested/parallel_matched.jsonl"
+    elif args.source == "tatoeba":
+        pairs = tatoeba_pairs(args.limit)
+        src_label, out_default = "tatoeba", "data/harvested/tatoeba_matched.jsonl"
     else:
         pairs = bsd_pairs()
+        src_label, out_default = "bsd", "data/harvested/parallel_matched.jsonl"
     if args.limit:
         pairs = pairs[: args.limit]
 
@@ -111,7 +144,7 @@ def main() -> None:
     golden = [json.loads(l) for l in (REPO / "data/golden/eval_set.jsonl").read_text().splitlines() if l.strip()]
     golden_stems = {stem(r["jp"]) for r in golden}
 
-    # 3. label -> judge -> keep matched -> leak-filter
+    # 3. label -> judge -> keep matched -> leak-filter (optionally capped per band)
     kept, mism, leak, seen = [], 0, 0, set()
     bands = {"informal": 0, "polite": 0, "formal": 0}
     for p in pairs:
@@ -120,6 +153,8 @@ def main() -> None:
             continue
         seen.add(key)
         src = classify_register(p["ja"])
+        if args.max_per_band and bands[src] >= args.max_per_band:
+            continue
         if judge(p["en"]) != src:          # translator did NOT preserve register
             mism += 1
             continue
@@ -128,17 +163,17 @@ def main() -> None:
             continue
         kept.append({"jp": p["ja"], "source_band": src, "en": p["en"],
                      "group_id": p["group_id"], "domain": p["domain"],
-                     "source": "bsd" if not args.hf_dataset else args.hf_dataset})
+                     "source": src_label})
         bands[src] += 1
 
-    out = REPO / args.out
+    out = REPO / (args.out or out_default)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in kept))
     total = len(seen)
     print(f"\nsource pairs: {total}")
     print(f"kept (register-matched): {len(kept)}  bands={bands}")
     print(f"dropped: mismatch={mism}  leak_vs_golden={leak}")
-    print(f"-> {out}   (judge={args.judge})")
+    print(f"-> {out}   (source={src_label}, judge={args.judge})")
     print("Merge into training with:  cp %s data/seed/" % args.out)
 
 

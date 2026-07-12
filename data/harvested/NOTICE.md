@@ -28,3 +28,15 @@ We keep only turns where the human translator preserved the register
 (`register_checker(ja) == judge(en)`). See the BSD repository for its license and cite:
 Rikters et al., *Designing the Business Conversation Corpus* (2019). Verify the BSD license
 before any redistribution; we do not commit the derived data to git.
+
+## tatoeba_matched.jsonl — mined from OPUS Tatoeba
+
+`tatoeba_matched.jsonl` (gitignored, reproducible) is mined by
+`python -m data.harvest_parallel --source tatoeba` from the **Tatoeba** corpus as distributed
+by **OPUS** ([opus.nlpl.eu/Tatoeba](https://opus.nlpl.eu/Tatoeba)). Tatoeba is everyday,
+conversational sentences, so it supplies the **informal** band that business corpora lack.
+Same register-preservation filter and golden-set leak-guard as BSD.
+
+- **License:** Tatoeba sentences are CC-BY 2.0 FR; the OPUS alignment is freely redistributable.
+  Attribute Tatoeba and OPUS. Cite: Tiedemann, *Parallel Data, Tools and Interfaces in OPUS*
+  (LREC 2012). Verify the license before redistribution; we do not commit the derived data.
