@@ -79,6 +79,24 @@ def _write_outputs(results, preds_by_model):
     print(f"wrote results/results_table.md, predictions.jsonl, error_analysis.md")
 
 
+def _ensure_llm_credentials() -> None:
+    """Prompt for any missing LLM gateway credentials so the file is runnable without
+    hardcoding secrets. The API key is read hidden (getpass); the base URL and model are
+    plain prompts (they aren't secret). Anything already in the environment is left as-is,
+    so setting them ahead of time (Colab secrets, --export) skips the prompt entirely."""
+    import getpass
+    import os
+    if not os.environ.get("TEACHER_API_KEY"):
+        os.environ["TEACHER_API_KEY"] = getpass.getpass("TEACHER_API_KEY (input hidden): ").strip()
+    if not os.environ.get("TEACHER_MODEL"):
+        os.environ["TEACHER_MODEL"] = input(
+            "TEACHER_MODEL (e.g. gpt-4o or claude-group/claude-sonnet-4-6): ").strip()
+    if not os.environ.get("TEACHER_BASE_URL"):
+        base = input("TEACHER_BASE_URL (blank = OpenAI direct): ").strip()
+        if base:
+            os.environ["TEACHER_BASE_URL"] = base
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--golden", default="data/golden/eval_set.jsonl")
@@ -98,6 +116,11 @@ def main() -> None:
     golden = [json.loads(l) for l in Path(args.golden).read_text().splitlines() if l.strip()]
     if args.limit:
         golden = golden[: args.limit]
+
+    # If the frontier baseline or the LLM judge is in play, make sure we have credentials —
+    # prompt for whatever is missing rather than forcing the user to edit code.
+    if args.llm or args.judge == "llm":
+        _ensure_llm_credentials()
 
     if args.judge == "heuristic":
         from eval.judge import classify_english_band_heuristic as judge_fn
