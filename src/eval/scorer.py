@@ -26,6 +26,8 @@ def score(rows: list[dict]) -> dict:
 
     correct = 0
     flattened = 0
+    flat_one_step = 0   # mild: dropped 1 register (formal->polite, polite->informal)
+    flat_two_step = 0   # severe: dropped 2 registers (formal->informal)
     non_informal = 0
     per_band_total: dict[str, int] = {}
     per_band_correct: dict[str, int] = {}
@@ -43,13 +45,21 @@ def score(rows: list[dict]) -> dict:
 
         if src != "informal":
             non_informal += 1
-            if ORDER.get(pred, 0) < ORDER[src]:   # output sits at a lower register
+            drop = ORDER[src] - ORDER.get(pred, 0)   # >0 means output sits at a lower register
+            if drop > 0:
                 flattened += 1
+                if drop == 1:
+                    flat_one_step += 1
+                elif drop == 2:
+                    flat_two_step += 1
 
     return {
         "n": n,
         "register_match_accuracy": round(correct / n, 4),
         "flattening_rate": round(flattened / non_informal, 4) if non_informal else 0.0,
+        # severity split of the flattening cases (formal->informal is the serious offense)
+        "flattening_one_step_rate": round(flat_one_step / non_informal, 4) if non_informal else 0.0,
+        "flattening_two_step_rate": round(flat_two_step / non_informal, 4) if non_informal else 0.0,
         "per_band_accuracy": {
             b: round(per_band_correct.get(b, 0) / t, 4) for b, t in per_band_total.items()
         },
