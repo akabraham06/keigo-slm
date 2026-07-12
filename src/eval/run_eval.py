@@ -55,12 +55,13 @@ def _write_outputs(results, preds_by_model):
 
     # results table
     table = scorer.format_table(results)
-    per_band = "\n".join(
-        f"- **{m}** per-band: {s.get('per_band_accuracy', {})}" for m, s in results.items())
+    legend = (
+        "**Columns** — `match↑`: output register == source register (higher better). "
+        "`flat↓`: non-casual sources rendered lower (the forbidden failure; lower better). "
+        "`severe↓`: subset of flattening that dropped 2 levels (formal→casual). "
+        "`informal/polite/formal`: per-band match accuracy.")
     (out_dir / "results_table.md").write_text(
-        f"# Results — base vs tuned vs LLM (golden set)\n\n{table}\n\n{per_band}\n\n"
-        "Metric = output English band == known source band. `flattening` = non-casual "
-        "sources rendered at a lower register (the forbidden failure).\n")
+        f"# Results — base vs tuned vs frontier (golden set)\n\n{table}\n\n{legend}\n")
 
     # raw predictions (for charts + inspection)
     all_preds = [p for ps in preds_by_model.values() for p in ps]
