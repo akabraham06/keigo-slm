@@ -87,6 +87,9 @@ def main() -> None:
     ap.add_argument("--no-llm", dest="llm", action="store_false")
     ap.add_argument("--judge", choices=["llm", "heuristic"], default="llm",
                     help="'heuristic' = free rule-based band classifier (no API key)")
+    ap.add_argument("--llm-prompt", default="llm_baseline.md",
+                    help="frontier baseline prompt: llm_baseline.md (well-prompted, fair) "
+                         "or llm_naive.md (poorly-prompted — no register instruction)")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
@@ -109,7 +112,8 @@ def main() -> None:
         translate_fns["tuned"] = make_translator(args.tuned)
     if args.llm:
         from llm_client import complete, load_prompt
-        tmpl = load_prompt("llm_baseline.md")
+        tmpl = load_prompt(args.llm_prompt)
+        print(f"llm baseline prompt: {args.llm_prompt}")
         translate_fns["llm"] = lambda jp: complete(
             system="You are an expert Japanese-to-English translator.",
             user=tmpl.replace("{JP}", jp))
