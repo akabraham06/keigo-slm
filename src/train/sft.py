@@ -26,12 +26,19 @@ REPO = Path(__file__).resolve().parent.parent.parent
 
 
 def load_rows() -> list[dict]:
-    rows: list[dict] = []
-    for f in sorted(glob.glob(str(REPO / "data/seed/*.jsonl"))):
-        rows += [json.loads(l) for l in open(f) if l.strip()]
+    # Prefer the merged+balanced set if it exists (data.build_training_set), else the seed.
+    full = REPO / "data/train_full.jsonl"
+    if full.exists():
+        rows = [json.loads(l) for l in open(full) if l.strip()]
+        print(f"using balanced training set: {full.name}")
+    else:
+        rows = []
+        for f in sorted(glob.glob(str(REPO / "data/seed/*.jsonl"))):
+            rows += [json.loads(l) for l in open(f) if l.strip()]
+        print("using data/seed/*.jsonl (run build_training_set for the balanced set)")
     rows = [r for r in rows if r.get("en")]           # need a target
     if not rows:
-        raise SystemExit("no trainable rows with `en` under data/seed/")
+        raise SystemExit("no trainable rows with `en`")
     return rows
 
 
