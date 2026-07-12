@@ -18,3 +18,13 @@ JP→EN target would teach register *flattening* — the opposite of this projec
 
 The full harvest is reproducible with `python -m data.harvest_cocoa`; only a small sample is
 committed to git (see `cocoa_ja_sources.sample.jsonl`).
+
+## parallel_matched.jsonl — mined from BSD
+
+`parallel_matched.jsonl` (gitignored, reproducible) is mined by `python -m data.harvest_parallel`
+from the **Business Scene Dialogue (BSD)** corpus
+([tsuruoka-lab/BSD](https://github.com/tsuruoka-lab/BSD)) — real JA-EN business dialogue.
+We keep only turns where the human translator preserved the register
+(`register_checker(ja) == judge(en)`). See the BSD repository for its license and cite:
+Rikters et al., *Designing the Business Conversation Corpus* (2019). Verify the BSD license
+before any redistribution; we do not commit the derived data to git.
