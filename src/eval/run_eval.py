@@ -44,7 +44,8 @@ def evaluate(golden: list[dict], translate_fns: dict, judge_fn):
         results[name] = scorer.score(scored)
         preds_by_model[name] = preds
         print(f"  {name}: match={results[name]['register_match_accuracy']:.2%} "
-              f"flattening={results[name]['flattening_rate']:.2%}")
+              f"flattening={results[name]['flattening_rate']:.2%} "
+              f"severe={results[name]['flattening_two_step_rate']:.2%}")
     return results, preds_by_model
 
 
@@ -87,9 +88,9 @@ def main() -> None:
     ap.add_argument("--no-llm", dest="llm", action="store_false")
     ap.add_argument("--judge", choices=["llm", "heuristic"], default="llm",
                     help="'heuristic' = free rule-based band classifier (no API key)")
-    ap.add_argument("--llm-prompt", default="llm_baseline.md",
-                    help="frontier baseline prompt: llm_baseline.md (well-prompted, fair) "
-                         "or llm_naive.md (poorly-prompted — no register instruction)")
+    ap.add_argument("--llm-prompt", nargs="+", default=["llm_baseline.md"],
+                    help="one or more frontier baseline prompts, each becomes its own row. "
+                         "e.g. --llm-prompt llm_naive.md llm_baseline.md  (poorly- vs well-prompted)")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
@@ -112,11 +113,14 @@ def main() -> None:
         translate_fns["tuned"] = make_translator(args.tuned)
     if args.llm:
         from llm_client import complete, load_prompt
-        tmpl = load_prompt(args.llm_prompt)
-        print(f"llm baseline prompt: {args.llm_prompt}")
-        translate_fns["llm"] = lambda jp: complete(
-            system="You are an expert Japanese-to-English translator.",
-            user=tmpl.replace("{JP}", jp))
+        for prompt_file in args.llm_prompt:
+            tmpl = load_prompt(prompt_file)
+            # label the row by the prompt, e.g. llm_naive.md -> "llm-naive"
+            label = "llm-" + prompt_file.replace("llm_", "").replace(".md", "")
+            print(f"frontier baseline: {label}  (prompt={prompt_file})")
+            translate_fns[label] = (lambda t: lambda jp: complete(
+                system="You are an expert Japanese-to-English translator.",
+                user=t.replace("{JP}", jp)))(tmpl)
 
     if not translate_fns:
         raise SystemExit("no models enabled")

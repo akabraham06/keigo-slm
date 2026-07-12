@@ -68,15 +68,30 @@ def score(rows: list[dict]) -> dict:
 
 
 def format_table(results_by_model: dict[str, dict]) -> str:
-    """results_by_model: {"base": score(...), "tuned": score(...), "llm": score(...)}"""
-    header = f"| {'model':<8} | match acc | flattening | n |\n|---|---|---|---|\n"
-    rows = ""
+    """One aligned table with every headline metric, per model.
+
+    Columns: match acc (↑), flattening (↓), severe flattening = formal→casual (↓),
+    and per-band accuracy for informal / polite / formal.
+    """
+    headers = ["model", "match↑", "flat↓", "severe↓", "informal", "polite", "formal", "n"]
+    rows = [headers]
     for name, s in results_by_model.items():
-        rows += (
-            f"| {name:<8} | {s.get('register_match_accuracy', 0):.2%} "
-            f"| {s.get('flattening_rate', 0):.2%} | {s.get('n', 0)} |\n"
-        )
-    return header + rows
+        pb = s.get("per_band_accuracy", {})
+        rows.append([
+            name,
+            f"{s.get('register_match_accuracy', 0):.1%}",
+            f"{s.get('flattening_rate', 0):.1%}",
+            f"{s.get('flattening_two_step_rate', 0):.1%}",
+            f"{pb.get('informal', 0):.1%}",
+            f"{pb.get('polite', 0):.1%}",
+            f"{pb.get('formal', 0):.1%}",
+            str(s.get("n", 0)),
+        ])
+    widths = [max(len(r[c]) for r in rows) for c in range(len(headers))]
+    def fmt(r):
+        return "| " + " | ".join(v.ljust(widths[i]) for i, v in enumerate(r)) + " |"
+    sep = "|" + "|".join("-" * (w + 2) for w in widths) + "|"
+    return "\n".join([fmt(rows[0]), sep] + [fmt(r) for r in rows[1:]])
 
 
 if __name__ == "__main__":
