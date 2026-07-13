@@ -3,155 +3,496 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>keigo-slm · live demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="A small language model for Japanese to English translation that preserves politeness register." />
+  <title>keigo-slm · register-aware Japanese → English</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    .jp { font-family: 'Noto Sans JP', sans-serif; }
-    .fade { animation: fade .25s ease; } @keyframes fade { from {opacity:0; transform: translateY(4px)} to {opacity:1} }
+    :root {
+      --ink: #17202d;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --paper: #ffffff;
+      --wash: #f5f7fa;
+      --navy: #243b53;
+      --indigo: #4f46e5;
+      --indigo-soft: #eef2ff;
+      --green: #067647;
+      --green-soft: #ecfdf3;
+      --amber: #b54708;
+      --amber-soft: #fffaeb;
+      --violet: #6941c6;
+      --violet-soft: #f4f3ff;
+      --shadow: 0 24px 70px rgba(16, 24, 40, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(79, 70, 229, .08), transparent 29rem),
+        linear-gradient(180deg, #fbfcff 0, var(--wash) 44rem, #fff 100%);
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+    }
+    button, input, textarea { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .jp { font-family: "Noto Sans JP", sans-serif; }
+
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+    .wordmark { display: flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: -.02em; }
+    .mark {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      color: #fff; background: var(--ink); border-radius: 10px; font-family: "Noto Sans JP";
+    }
+    .nav-links { display: flex; gap: 10px; }
+    .nav-link {
+      padding: 8px 12px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600;
+      border-radius: 9px;
+    }
+    .nav-link:hover { color: var(--ink); background: rgba(255,255,255,.7); }
+
+    .hero { padding: 66px 0 54px; text-align: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px;
+      color: #3730a3; background: var(--indigo-soft); border: 1px solid #d9ddff;
+      border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: #6366f1; box-shadow: 0 0 0 4px rgba(99,102,241,.12); }
+    h1 { margin: 22px auto 16px; max-width: 850px; font-size: clamp(42px, 7vw, 72px); line-height: 1.03; letter-spacing: -.055em; }
+    .hero p { max-width: 660px; margin: 0 auto; color: var(--muted); font-size: clamp(17px, 2.3vw, 20px); }
+    .hero strong { color: var(--ink); }
+    .model-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .model-chip { padding: 7px 11px; color: #475467; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 600; }
+
+    .demo {
+      overflow: hidden; background: var(--paper); border: 1px solid rgba(208,213,221,.9);
+      border-radius: 24px; box-shadow: var(--shadow);
+    }
+    .demo-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 28px 30px 24px; border-bottom: 1px solid var(--line); }
+    .kicker { margin: 0 0 4px; color: var(--indigo); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: 25px; letter-spacing: -.025em; }
+    .subtle { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .mode { display: flex; align-items: center; gap: 7px; flex: 0 0 auto; padding: 7px 10px; color: var(--green); background: var(--green-soft); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .mode-dot { width: 7px; height: 7px; border-radius: 50%; background: #12b76a; }
+
+    .demo-body { display: grid; grid-template-columns: 290px 1fr; min-height: 470px; }
+    .scenarios { padding: 24px; background: #fafbfc; border-right: 1px solid var(--line); }
+    .label { margin: 0 0 10px; color: #98a2b3; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .scenario-list { display: grid; gap: 8px; }
+    .scenario {
+      width: 100%; padding: 13px 14px; text-align: left; background: transparent; border: 1px solid transparent;
+      border-radius: 11px; cursor: pointer; transition: .16s ease;
+    }
+    .scenario:hover { background: #fff; border-color: var(--line); }
+    .scenario.active { color: #3730a3; background: var(--indigo-soft); border-color: #d9ddff; }
+    .scenario-title { display: block; font-weight: 700; font-size: 14px; }
+    .scenario-meta { display: block; margin-top: 2px; color: #98a2b3; font-size: 12px; }
+    .scenario.active .scenario-meta { color: #6366a7; }
+
+    .workspace { padding: 24px 28px 28px; }
+    .register-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .register-tab {
+      flex: 1; padding: 9px 10px; background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      cursor: pointer; font-size: 13px; font-weight: 700; transition: .16s ease;
+    }
+    .register-tab:hover { border-color: #b9c0cc; }
+    .register-tab.active[data-band="informal"] { color: #344054; background: #f2f4f7; border-color: #d0d5dd; }
+    .register-tab.active[data-band="polite"] { color: var(--green); background: var(--green-soft); border-color: #abefc6; }
+    .register-tab.active[data-band="formal"] { color: var(--violet); background: var(--violet-soft); border-color: #d9d6fe; }
+    .field-label { display: flex; justify-content: space-between; margin-bottom: 8px; color: #475467; font-size: 12px; font-weight: 700; }
+    textarea {
+      display: block; width: 100%; min-height: 104px; resize: vertical; padding: 15px 16px;
+      color: var(--ink); background: #fcfcfd; border: 1px solid var(--line); border-radius: 12px;
+      outline: none; font-size: 18px; line-height: 1.6;
+    }
+    textarea:focus { border-color: #a5b4fc; box-shadow: 0 0 0 3px rgba(99,102,241,.1); background: #fff; }
+    .action-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 12px 0 18px; }
+    .hint { color: #98a2b3; font-size: 12px; }
+    .primary {
+      padding: 10px 17px; color: #fff; background: var(--indigo); border: 0; border-radius: 10px;
+      cursor: pointer; font-weight: 700; box-shadow: 0 1px 2px rgba(16,24,40,.1);
+    }
+    .primary:hover { background: #4338ca; }
+    .primary:disabled { opacity: .55; cursor: wait; }
+
+    .output { padding: 18px; background: #f8fafc; border: 1px solid var(--line); border-radius: 14px; }
+    .output-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .source-label { color: #667085; font-size: 12px; font-weight: 700; }
+    .status { padding: 5px 8px; color: var(--green); background: var(--green-soft); border-radius: 999px; font-size: 11px; font-weight: 700; }
+    .english { min-height: 35px; margin: 0; font-size: 22px; line-height: 1.45; letter-spacing: -.015em; }
+    .band-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); color: #98a2b3; font-size: 12px; }
+    .band { padding: 5px 8px; border-radius: 7px; font-weight: 700; }
+    .band.informal { color: #475467; background: #eaecf0; }
+    .band.polite { color: var(--green); background: #d1fadf; }
+    .band.formal { color: var(--violet); background: #e9e7fd; }
+    .error { display: none; margin: 10px 0 0; color: #b42318; font-size: 13px; }
+
+    details.backend { margin-top: 17px; border-top: 1px solid var(--line); }
+    details.backend summary { padding: 14px 2px 0; color: #667085; cursor: pointer; font-size: 12px; font-weight: 700; }
+    .backend-controls { display: flex; gap: 8px; margin-top: 10px; }
+    .backend-controls input { flex: 1; min-width: 0; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; outline: none; }
+    .secondary { padding: 9px 12px; background: #f2f4f7; border: 1px solid var(--line); border-radius: 9px; cursor: pointer; font-weight: 700; }
+    .connection { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; color: #98a2b3; font-size: 11px; }
+    .connection-dot { width: 7px; height: 7px; border-radius: 50%; background: #d0d5dd; }
+
+    .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 72px 0 62px; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 18px; }
+    .proof-card { min-height: 190px; padding: 24px; background: #fff; }
+    .step { display: inline-grid; width: 28px; height: 28px; place-items: center; color: #3730a3; background: var(--indigo-soft); border-radius: 8px; font-size: 12px; font-weight: 700; }
+    .proof-card h3 { margin: 32px 0 7px; font-size: 16px; }
+    .proof-card p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .thesis { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; padding: 0 0 72px; }
+    .thesis h2 { font-size: 32px; }
+    .thesis > p { margin: 5px 0 0; color: var(--muted); font-size: 17px; }
+    .facts { display: grid; gap: 10px; }
+    .fact { display: flex; gap: 14px; padding: 16px; background: #fff; border: 1px solid var(--line); border-radius: 13px; }
+    .fact strong { display: block; margin-bottom: 2px; font-size: 14px; }
+    .fact span { color: var(--muted); font-size: 13px; }
+    .fact-icon { flex: 0 0 auto; display: grid; width: 32px; height: 32px; place-items: center; color: #3730a3; background: var(--indigo-soft); border-radius: 9px; font-weight: 700; }
+
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 25px 0 30px; color: #98a2b3; font-size: 12px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { font-weight: 700; text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+
+    .fade { animation: fade .22s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 820px) {
+      .hero { padding-top: 44px; }
+      .demo-body { grid-template-columns: 1fr; }
+      .scenarios { border-right: 0; border-bottom: 1px solid var(--line); }
+      .scenario-list { grid-template-columns: 1fr 1fr; }
+      .proof { grid-template-columns: 1fr 1fr; }
+      .thesis { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 24px, 1120px); }
+      .nav-link:first-child { display: none; }
+      .hero { padding: 34px 0 36px; }
+      h1 { font-size: 42px; }
+      .demo-head { padding: 22px 20px; }
+      .mode { display: none; }
+      .scenarios, .workspace { padding: 18px; }
+      .scenario-list { grid-template-columns: 1fr; }
+      .register-tabs { gap: 5px; }
+      .register-tab { padding-inline: 5px; font-size: 12px; }
+      .action-row { align-items: flex-end; }
+      .proof { grid-template-columns: 1fr; }
+      .proof-card { min-height: auto; }
+      .proof-card h3 { margin-top: 18px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </head>
-<body class="min-h-screen bg-slate-50 text-slate-800">
-  <div class="max-w-2xl mx-auto px-5 py-10">
-
-    <!-- header -->
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold tracking-tight">keigo-slm</h1>
-      <p class="text-slate-500 mt-1">Japanese → English that <span class="font-semibold text-slate-700">keeps the politeness level</span> of the source. The behavior is baked into the model's weights — no prompt required.</p>
-    </header>
-
-    <!-- backend -->
-    <div class="flex items-center gap-2 mb-6 text-sm">
-      <span id="dot" class="w-2.5 h-2.5 rounded-full bg-slate-300 shrink-0"></span>
-      <input id="backend" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-slate-300"
-             placeholder="Backend URL (paste the Colab tunnel URL, e.g. https://xxx.trycloudflare.com)" />
-      <button id="ping" class="rounded-lg px-3 py-2 bg-slate-200 hover:bg-slate-300 font-medium">Check</button>
+<body>
+  <nav class="shell nav" aria-label="Main navigation">
+    <a class="wordmark" href="#top" style="text-decoration:none"><span class="mark">敬</span> keigo-slm</a>
+    <div class="nav-links">
+      <a class="nav-link" href="https://github.com/akabraham06/keigo-slm" target="_blank" rel="noreferrer">Source code ↗</a>
+      <a class="nav-link" href="https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2" target="_blank" rel="noreferrer">Model ↗</a>
     </div>
+  </nav>
 
-    <!-- examples -->
-    <div class="mb-4">
-      <p class="text-xs uppercase tracking-wide text-slate-400 mb-2">Try an example — same meaning, three politeness levels</p>
-      <div id="examples" class="flex flex-wrap gap-2"></div>
-    </div>
+  <main id="top">
+    <section class="shell hero">
+      <span class="eyebrow"><span class="pulse"></span> Fine-tuned small language model</span>
+      <h1>Translation that keeps the <span style="color:var(--indigo)">social signal.</span></h1>
+      <p>Japanese encodes politeness in the verb. English does not. <strong>keigo-slm</strong> is trained to translate the words without flattening the register behind them.</p>
+      <div class="model-strip" aria-label="Model details">
+        <span class="model-chip">Qwen3 · 1.7B</span>
+        <span class="model-chip">QLoRA fine-tune</span>
+        <span class="model-chip">Japanese → English</span>
+        <span class="model-chip">3 register bands</span>
+      </div>
+    </section>
 
-    <!-- input -->
-    <textarea id="jp" rows="3" class="jp w-full rounded-xl border border-slate-200 p-4 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
-              placeholder="日本語を入力… (type or pick an example)"></textarea>
-    <button id="go" class="mt-3 w-full rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 transition disabled:opacity-50">
-      Translate
-    </button>
+    <section class="shell demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <div>
+          <p class="kicker">Interactive behavior preview</p>
+          <h2 id="demo-title">Same meaning. Different relationship.</h2>
+          <p class="subtle">Choose a situation and move between casual, polite, and formal Japanese.</p>
+        </div>
+        <span class="mode"><span class="mode-dot"></span> Showcase ready</span>
+      </div>
 
-    <!-- result -->
-    <div id="result" class="mt-6 hidden fade">
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div id="status" class="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full mb-4"></div>
-        <p id="english" class="text-xl leading-relaxed text-slate-900"></p>
-        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-slate-100 text-sm">
-          <span class="text-slate-400">source</span>
-          <span id="src-badge" class="px-2.5 py-1 rounded-md font-medium"></span>
-          <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          <span class="text-slate-400">output</span>
-          <span id="out-badge" class="px-2.5 py-1 rounded-md font-medium"></span>
+      <div class="demo-body">
+        <aside class="scenarios">
+          <p class="label">Situation</p>
+          <div id="scenario-list" class="scenario-list"></div>
+        </aside>
+
+        <div class="workspace">
+          <div class="register-tabs" role="tablist" aria-label="Politeness register">
+            <button class="register-tab" data-band="informal" role="tab">Casual · くだけた</button>
+            <button class="register-tab" data-band="polite" role="tab">Polite · 丁寧</button>
+            <button class="register-tab" data-band="formal" role="tab">Formal · 敬語</button>
+          </div>
+
+          <label class="field-label" for="jp"><span>Japanese source</span><span id="detected">register detected from morphology</span></label>
+          <textarea id="jp" class="jp" spellcheck="false" aria-describedby="preview-note"></textarea>
+          <div class="action-row">
+            <span id="preview-note" class="hint">Preset outputs are verified reference pairs from the training data.</span>
+            <button id="go" class="primary">Translate</button>
+          </div>
+
+          <div id="output" class="output" aria-live="polite">
+            <div class="output-top">
+              <span id="output-source" class="source-label">Curated training reference</span>
+              <span id="status" class="status">✓ Register preserved</span>
+            </div>
+            <p id="english" class="english">I’ll take a look at the docs.</p>
+            <div class="band-row">
+              <span>source</span><span id="src-band" class="band informal">casual</span>
+              <span>→</span><span>English output</span><span id="out-band" class="band informal">casual</span>
+            </div>
+          </div>
+          <p id="error" class="error"></p>
+
+          <details class="backend">
+            <summary>Optional: connect a live GPU backend for arbitrary text</summary>
+            <div class="backend-controls">
+              <input id="backend" type="url" placeholder="https://your-gpu-endpoint.example" aria-label="GPU backend URL" />
+              <button id="ping" class="secondary">Check</button>
+            </div>
+            <span class="connection"><span id="connection-dot" class="connection-dot"></span><span id="connection-text">No backend connected — preset preview remains available.</span></span>
+          </details>
         </div>
       </div>
+    </section>
+
+    <section class="shell proof" aria-label="Project pipeline">
+      <article class="proof-card"><span class="step">01</span><h3>Detect</h3><p>Label Japanese register deterministically from verb morphology.</p></article>
+      <article class="proof-card"><span class="step">02</span><h3>Curate</h3><p>Mine real parallel data, filter mismatched English, and balance scarce keigo.</p></article>
+      <article class="proof-card"><span class="step">03</span><h3>Fine-tune</h3><p>Teach Qwen3-1.7B with QLoRA and a fixed, minimal translation template.</p></article>
+      <article class="proof-card"><span class="step">04</span><h3>Evaluate</h3><p>Measure register match and the forbidden failure: politeness flattening.</p></article>
+    </section>
+
+    <section class="shell thesis">
+      <div>
+        <p class="kicker">The thesis</p>
+        <h2>Behavior from data, not a clever prompt.</h2>
+        <p>A general model tends toward safe, neutral English. This project treats register preservation as a data-distribution problem: add explicit contrast, rebalance the rare formal band, and make the behavior part of the model’s weights.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="fact-icon">形</span><div><strong>Source labels are auditable</strong><span>Casual, です・ます polite, and honorific/humble formal forms are read directly from Japanese morphology.</span></div></div>
+        <div class="fact"><span class="fact-icon">≠</span><div><strong>BLEU cannot see the failure</strong><span>Two translations can preserve meaning while expressing very different social distance.</span></div></div>
+        <div class="fact"><span class="fact-icon">↘</span><div><strong>Flattening is the headline risk</strong><span>The evaluator explicitly counts formal or polite sources rendered at a lower English register.</span></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>Built by Alan Abraham · Train Your Own SLM</span>
+      <div class="footer-links">
+        <a href="https://github.com/akabraham06/keigo-slm" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2" target="_blank" rel="noreferrer">Model card</a>
+      </div>
     </div>
-
-    <p id="error" class="mt-4 text-sm text-red-600 hidden"></p>
-
-    <footer class="mt-10 text-xs text-slate-400">
-      Source register is detected deterministically (Japanese verb morphology). Output register is
-      estimated by a heuristic judge. Flattening = politeness rendered lower than the source.
-    </footer>
-  </div>
+  </footer>
 
   <script>
-    const $ = (id) => document.getElementById(id);
-    const BANDS = {
-      informal: { label: "casual · くだけた", cls: "bg-slate-100 text-slate-600" },
-      polite:   { label: "polite · 丁寧",     cls: "bg-emerald-100 text-emerald-700" },
-      formal:   { label: "formal · 敬語",     cls: "bg-violet-100 text-violet-700" },
-    };
-    const STATUS = {
-      preserved:   { text: "✓ Register preserved", cls: "bg-emerald-100 text-emerald-700" },
-      flattened:   { text: "⚠ Flattened — politeness lost", cls: "bg-red-100 text-red-700" },
-      over_polite: { text: "↑ Slightly more formal than source", cls: "bg-amber-100 text-amber-700" },
-    };
-    const EXAMPLES = [
-      { jp: "コーヒー飲む？", tag: "casual" },
-      { jp: "コーヒーを飲みますか。", tag: "polite" },
-      { jp: "コーヒーをお召し上がりになりますか。", tag: "formal" },
-      { jp: "資料見とくね。", tag: "casual" },
-      { jp: "資料を確認します。", tag: "polite" },
-      { jp: "資料を拝見いたします。", tag: "formal" },
+    const SCENARIOS = [
+      {
+        id: "review", title: "Review documents", meta: "casual → business keigo",
+        variants: {
+          informal: { jp: "資料見とくね。", en: "I'll take a look at the docs." },
+          polite: { jp: "資料を見ておきます。", en: "I'll look over the materials." },
+          formal: { jp: "資料を拝見いたします。", en: "I would be glad to review the materials." }
+        }
+      },
+      {
+        id: "repeat", title: "Ask someone to repeat", meta: "direct → deferential request",
+        variants: {
+          informal: { jp: "もう一回言って。", en: "Say that again?" },
+          polite: { jp: "もう一度言ってください。", en: "Could you say that again?" },
+          formal: { jp: "恐れ入りますが、もう一度おっしゃっていただけますか。", en: "I beg your pardon; might I trouble you to repeat that?" }
+        }
+      },
+      {
+        id: "introduce", title: "Introduce yourself", meta: "plain → humble speech",
+        variants: {
+          informal: { jp: "俺、田中。", en: "I'm Tanaka." },
+          polite: { jp: "田中と言います。", en: "My name is Tanaka." },
+          formal: { jp: "田中と申します。", en: "Allow me to introduce myself; I am Tanaka." }
+        }
+      },
+      {
+        id: "help", title: "Request help", meta: "quick ask → formal assistance",
+        variants: {
+          informal: { jp: "ちょっと手伝って。", en: "Gimme a hand real quick." },
+          polite: { jp: "手伝ってください。", en: "Please help me." },
+          formal: { jp: "ご協力いただきたく存じます。", en: "I would be most grateful for your assistance." }
+        }
+      }
     ];
 
-    // persist backend URL
-    const saved = localStorage.getItem("keigo_backend");
-    if (saved) $("backend").value = saved;
-    $("backend").addEventListener("input", () => localStorage.setItem("keigo_backend", $("backend").value.trim()));
+    const BAND_LABELS = { informal: "casual", polite: "polite", formal: "formal" };
+    const BAND_ORDER = { informal: 0, polite: 1, formal: 2 };
+    const $ = (id) => document.getElementById(id);
+    let scenario = SCENARIOS[0];
+    let band = "informal";
 
-    // example chips
-    EXAMPLES.forEach((e) => {
-      const b = document.createElement("button");
-      b.className = "jp text-sm px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50 transition";
-      b.innerHTML = `${e.jp} <span class="text-[10px] text-slate-400 ml-1">${e.tag}</span>`;
-      b.onclick = () => { $("jp").value = e.jp; };
-      $("examples").appendChild(b);
-    });
+    const referenceByJapanese = new Map();
+    for (const item of SCENARIOS) {
+      for (const [variantBand, pair] of Object.entries(item.variants)) {
+        referenceByJapanese.set(pair.jp, { ...pair, source_band: variantBand, output_band: variantBand, status: "preserved" });
+      }
+    }
 
-    const base = () => ($("backend").value.trim().replace(/\/+$/, ""));
+    function renderScenarioList() {
+      const list = $("scenario-list");
+      list.replaceChildren();
+      for (const item of SCENARIOS) {
+        const button = document.createElement("button");
+        button.className = "scenario" + (item.id === scenario.id ? " active" : "");
+        button.type = "button";
+        button.innerHTML = `<span class="scenario-title">${item.title}</span><span class="scenario-meta">${item.meta}</span>`;
+        button.addEventListener("click", () => {
+          scenario = item;
+          band = "informal";
+          renderScenarioList();
+          showVariant();
+        });
+        list.appendChild(button);
+      }
+    }
 
-    async function ping() {
-      $("dot").className = "w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0";
-      try {
-        const r = await fetch(base() + "/health");
-        const j = await r.json();
-        $("dot").className = "w-2.5 h-2.5 rounded-full " + (j.ok ? "bg-emerald-500" : "bg-amber-400") + " shrink-0";
-      } catch { $("dot").className = "w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"; }
+    function showVariant() {
+      const pair = scenario.variants[band];
+      $("jp").value = pair.jp;
+      document.querySelectorAll(".register-tab").forEach((tab) => {
+        const active = tab.dataset.band === band;
+        tab.classList.toggle("active", active);
+        tab.setAttribute("aria-selected", String(active));
+      });
+      renderResult({ english: pair.en, source_band: band, output_band: band, status: "preserved" }, false);
+    }
+
+    function renderResult(result, live) {
+      const sourceBand = result.source_band || "informal";
+      const outputBand = result.output_band || sourceBand;
+      $("output-source").textContent = live ? "Live SLM inference" : "Curated training reference";
+      $("english").textContent = result.english;
+      $("src-band").className = `band ${sourceBand}`;
+      $("src-band").textContent = BAND_LABELS[sourceBand];
+      $("out-band").className = `band ${outputBand}`;
+      $("out-band").textContent = BAND_LABELS[outputBand] || outputBand;
+      const drop = BAND_ORDER[sourceBand] - (BAND_ORDER[outputBand] ?? 0);
+      const status = result.status || (drop > 0 ? "flattened" : drop < 0 ? "over_polite" : "preserved");
+      const statusCopy = {
+        preserved: "✓ Register preserved",
+        flattened: "⚠ Politeness flattened",
+        over_polite: "↑ More formal than source"
+      };
+      $("status").textContent = statusCopy[status] || statusCopy.preserved;
+      $("status").style.color = status === "flattened" ? "#b42318" : status === "over_polite" ? "#b54708" : "#067647";
+      $("status").style.background = status === "flattened" ? "#fef3f2" : status === "over_polite" ? "#fffaeb" : "#ecfdf3";
+      $("detected").textContent = `${BAND_LABELS[sourceBand]} register detected`;
+      $("output").classList.remove("fade");
+      void $("output").offsetWidth;
+      $("output").classList.add("fade");
+      hideError();
+    }
+
+    function backendUrl() {
+      return $("backend").value.trim().replace(/\/+$/, "");
     }
 
     async function translate() {
       const jp = $("jp").value.trim();
-      $("error").classList.add("hidden");
-      if (!base()) { showError("Set the backend URL first (the Colab tunnel URL)."); return; }
       if (!jp) return;
-      $("go").disabled = true; $("go").textContent = "Translating…";
+      hideError();
+      const button = $("go");
+      const backend = backendUrl();
+
+      if (!backend) {
+        const preview = referenceByJapanese.get(jp);
+        if (preview) {
+          renderResult({ ...preview, english: preview.en }, false);
+          return;
+        }
+        showError("This static showcase can replay the verified preset pairs above. Connect the optional GPU backend to translate arbitrary Japanese with the SLM.");
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Translating…";
       try {
-        const r = await fetch(base() + "/translate", {
-          method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ jp }),
+        const response = await fetch(`${backend}/translate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ jp })
         });
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        const j = await r.json();
-        if (j.error) throw new Error(j.error);
-        render(j);
-      } catch (e) {
-        showError("Could not reach the model backend. Is the Colab cell running and the URL correct? (" + e.message + ")");
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const result = await response.json();
+        if (result.error) throw new Error(result.error);
+        renderResult(result, true);
+      } catch (error) {
+        showError(`The GPU backend could not be reached (${error.message}). Preset previews are still available.`);
       } finally {
-        $("go").disabled = false; $("go").textContent = "Translate";
+        button.disabled = false;
+        button.textContent = "Translate";
       }
     }
 
-    function render(j) {
-      const s = STATUS[j.status] || STATUS.preserved;
-      $("status").className = "inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full mb-4 " + s.cls;
-      $("status").textContent = s.text;
-      $("english").textContent = j.english;
-      const sb = BANDS[j.source_band], ob = BANDS[j.output_band];
-      $("src-badge").className = "px-2.5 py-1 rounded-md font-medium " + sb.cls; $("src-badge").textContent = sb.label;
-      $("out-badge").className = "px-2.5 py-1 rounded-md font-medium " + ob.cls; $("out-badge").textContent = ob.label;
-      $("result").classList.remove("hidden");
-      $("result").classList.remove("fade"); void $("result").offsetWidth; $("result").classList.add("fade");
+    async function checkBackend() {
+      const backend = backendUrl();
+      if (!backend) {
+        setConnection("idle", "Enter a GPU endpoint first.");
+        return;
+      }
+      setConnection("checking", "Checking model health…");
+      try {
+        const response = await fetch(`${backend}/health`);
+        const health = await response.json();
+        setConnection(health.ok ? "ready" : "checking", health.ok ? `Connected to ${health.model || "keigo-slm"}.` : "Backend is warming up the model.");
+      } catch {
+        setConnection("error", "Could not reach this endpoint.");
+      }
     }
 
-    function showError(msg) { $("error").textContent = msg; $("error").classList.remove("hidden"); }
+    function setConnection(state, text) {
+      const colors = { idle: "#d0d5dd", checking: "#f79009", ready: "#12b76a", error: "#f04438" };
+      $("connection-dot").style.background = colors[state];
+      $("connection-text").textContent = text;
+    }
 
-    $("go").onclick = translate;
-    $("ping").onclick = ping;
-    $("jp").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) translate(); });
-    if (saved) ping();
+    function showError(message) {
+      $("error").textContent = message;
+      $("error").style.display = "block";
+    }
+
+    function hideError() {
+      $("error").style.display = "none";
+    }
+
+    document.querySelectorAll(".register-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        band = tab.dataset.band;
+        showVariant();
+      });
+    });
+    $("go").addEventListener("click", translate);
+    $("ping").addEventListener("click", checkBackend);
+    $("jp").addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) translate();
+    });
+    $("backend").addEventListener("input", () => localStorage.setItem("keigo_backend", backendUrl()));
+
+    const savedBackend = localStorage.getItem("keigo_backend");
+    if (savedBackend) $("backend").value = savedBackend;
+    renderScenarioList();
+    showVariant();
   </script>
 </body>
 </html>

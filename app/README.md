@@ -9,6 +9,23 @@ web/index.html   ── the SPA (open in any browser; no build step)
 server.py        ── FastAPI backend that runs the v2 model on a GPU
 ```
 
+The SPA is deployed as a static Vercel site. It includes a standalone preview made from
+verified reference pairs in the training data, so the project and its three-band behavior
+remain reviewable when no GPU is running. Arbitrary input uses the optional backend below;
+Vercel deliberately does not install or bundle the multi-gigabyte training/runtime stack.
+
+## Deploy the static showcase to Vercel
+
+The repository-level `vercel.json` publishes only `app/web/` and skips Python dependency
+installation:
+
+```bash
+vercel --prod
+```
+
+Do not deploy the root `requirements.txt` as a Vercel function. PyTorch, Unsloth, and the
+model weights require a GPU runtime and exceed serverless function size limits.
+
 ## 1. Start the backend on Colab (GPU) and get a public URL
 
 Run this as **one cell** in Colab (GPU runtime). It launches the API and opens a free public

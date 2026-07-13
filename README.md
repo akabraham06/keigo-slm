@@ -15,7 +15,7 @@ dataset, not a clever prompt, is what makes a tiny model hold this behavior ever
 |---|---|
 | 📦 Dataset (Hugging Face) | _TODO_ |
 | 🤖 Model (Hugging Face) | [akabraham06/keigo-slm-qwen3-1.7b-v2](https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2) |
-| ▶️ Live demo (HF Space) | _TODO_ |
+| ▶️ Live demo | [keigo-slm.vercel.app](https://keigo-slm.vercel.app) |
 | 🎬 Demo video (3–5 min) | _TODO_ |
 
 ## Reproduce in three commands
