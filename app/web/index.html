@@ -141,11 +141,41 @@
     .connection { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; color: #98a2b3; font-size: 11px; }
     .connection-dot { width: 7px; height: 7px; border-radius: 50%; background: #d0d5dd; }
 
-    .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 72px 0 62px; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 18px; }
+    .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 72px auto 62px; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 18px; }
     .proof-card { min-height: 190px; padding: 24px; background: #fff; }
     .step { display: inline-grid; width: 28px; height: 28px; place-items: center; color: #3730a3; background: var(--indigo-soft); border-radius: 8px; font-size: 12px; font-weight: 700; }
     .proof-card h3 { margin: 32px 0 7px; font-size: 16px; }
     .proof-card p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .evidence { padding: 0 0 72px; }
+    .evidence-card { overflow: hidden; color: #f8fafc; background: #17202d; border: 1px solid #27364a; border-radius: 22px; box-shadow: var(--shadow); }
+    .evidence-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 28px 30px 24px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .evidence-head h2 { font-size: 28px; }
+    .evidence-head .subtle { max-width: 720px; color: #aeb9c8; }
+    .eval-badge { flex: 0 0 auto; padding: 7px 10px; color: #fdb022; background: rgba(247,144,9,.13); border: 1px solid rgba(247,144,9,.25); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .eval-badge.measured { color: #6ce9a6; background: rgba(18,183,106,.13); border-color: rgba(18,183,106,.28); }
+    .eval-content { padding: 26px 30px 30px; }
+    .eval-pending { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; align-items: center; }
+    .eval-pending h3 { margin: 0 0 8px; font-size: 19px; }
+    .eval-pending p { margin: 0; color: #aeb9c8; font-size: 14px; }
+    .eval-conditions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .condition { padding: 12px 13px; color: #d8e0ea; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; font-size: 12px; font-weight: 600; }
+    .condition strong { display: block; margin-bottom: 2px; color: #fff; font-size: 13px; }
+    .eval-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+    .eval-stat { padding: 15px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); border-radius: 11px; }
+    .eval-stat span { display: block; color: #98a7b9; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .eval-stat strong { display: block; margin-top: 5px; color: #fff; font-size: 22px; letter-spacing: -.02em; }
+    .eval-stat strong.positive { color: #6ce9a6; }
+    .table-wrap { overflow-x: auto; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; }
+    .eval-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .eval-table th, .eval-table td { padding: 13px 15px; text-align: right; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }
+    .eval-table th:first-child, .eval-table td:first-child { text-align: left; }
+    .eval-table th { color: #98a7b9; background: rgba(255,255,255,.035); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+    .eval-table tbody tr:last-child td { border-bottom: 0; }
+    .eval-table tr.tuned { background: rgba(79,70,229,.18); }
+    .eval-table tr.tuned td:first-child { color: #c7d7fe; font-weight: 700; }
+    .row-tag { margin-left: 7px; padding: 3px 6px; color: #c7d7fe; background: rgba(99,102,241,.22); border-radius: 999px; font-size: 9px; text-transform: uppercase; }
+    .eval-method { margin: 14px 0 0; color: #98a7b9; font-size: 12px; }
 
     .thesis { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; padding: 0 0 72px; }
     .thesis h2 { font-size: 32px; }
@@ -171,6 +201,8 @@
       .scenarios { border-right: 0; border-bottom: 1px solid var(--line); }
       .scenario-list { grid-template-columns: 1fr 1fr; }
       .proof { grid-template-columns: 1fr 1fr; }
+      .eval-pending { grid-template-columns: 1fr; }
+      .eval-summary { grid-template-columns: 1fr 1fr; }
       .thesis { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
@@ -188,6 +220,9 @@
       .proof { grid-template-columns: 1fr; }
       .proof-card { min-height: auto; }
       .proof-card h3 { margin-top: 18px; }
+      .evidence-head { padding: 22px 20px; flex-direction: column; }
+      .eval-content { padding: 20px; }
+      .eval-conditions, .eval-summary { grid-template-columns: 1fr; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -196,6 +231,7 @@
   <nav class="shell nav" aria-label="Main navigation">
     <a class="wordmark" href="#top" style="text-decoration:none"><span class="mark">敬</span> keigo-slm</a>
     <div class="nav-links">
+      <a class="nav-link" href="https://colab.research.google.com/github/akabraham06/keigo-slm/blob/main/notebooks/train_qlora.ipynb" target="_blank" rel="noreferrer">Colab ↗</a>
       <a class="nav-link" href="https://github.com/akabraham06/keigo-slm" target="_blank" rel="noreferrer">Source code ↗</a>
       <a class="nav-link" href="https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2" target="_blank" rel="noreferrer">Model ↗</a>
     </div>
@@ -211,6 +247,7 @@
         <span class="model-chip">QLoRA fine-tune</span>
         <span class="model-chip">Japanese → English</span>
         <span class="model-chip">3 register bands</span>
+        <span class="model-chip">2,260 training pairs · 127 held out</span>
       </div>
     </section>
 
@@ -276,6 +313,24 @@
       <article class="proof-card"><span class="step">04</span><h3>Evaluate</h3><p>Measure register match and the forbidden failure: politeness flattening.</p></article>
     </section>
 
+    <section class="shell evidence" aria-labelledby="eval-title">
+      <div class="evidence-card">
+        <div class="evidence-head">
+          <div>
+            <p class="kicker" style="color:#a5b4fc">Measured evaluation</p>
+            <h2 id="eval-title">Does fine-tuning change the behavior?</h2>
+            <p class="subtle">Four conditions, the same balanced held-out set, deterministic decoding, and one fixed register judge.</p>
+          </div>
+          <span id="eval-badge" class="eval-badge">Checking results…</span>
+        </div>
+        <div id="eval-content" class="eval-content">
+          <div class="eval-pending">
+            <div><h3>Loading evaluation evidence</h3><p>The page only displays measured model outputs—never estimates or training references presented as results.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="shell thesis">
       <div>
         <p class="kicker">The thesis</p>
@@ -294,6 +349,7 @@
     <div class="shell footer-inner">
       <span>Built by Alan Abraham · Train Your Own SLM</span>
       <div class="footer-links">
+        <a href="https://colab.research.google.com/github/akabraham06/keigo-slm/blob/main/notebooks/train_qlora.ipynb" target="_blank" rel="noreferrer">Colab</a>
         <a href="https://github.com/akabraham06/keigo-slm" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2" target="_blank" rel="noreferrer">Model card</a>
       </div>
@@ -476,6 +532,94 @@
       $("error").style.display = "none";
     }
 
+    const EVAL_ORDER = ["base", "tuned", "llm-naive", "llm-baseline"];
+
+    function pct(value) {
+      return typeof value === "number" ? `${(value * 100).toFixed(1)}%` : "—";
+    }
+
+    function signedPoints(value) {
+      if (typeof value !== "number") return "—";
+      const points = value * 100;
+      return `${points >= 0 ? "+" : ""}${points.toFixed(1)} pts`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+      })[character]);
+    }
+
+    function renderPendingEvaluation(payload = {}) {
+      $("eval-badge").className = "eval-badge";
+      $("eval-badge").textContent = "Measured run pending";
+      $("eval-content").innerHTML = `
+        <div class="eval-pending">
+          <div>
+            <h3>The comparison is defined; the numbers are not yet published.</h3>
+            <p>${escapeHtml(payload.message || "Run the full GPU evaluation before making a performance claim.")} The held-out set contains ${payload.evaluation?.n || 127} examples and is never used for training.</p>
+          </div>
+          <div class="eval-conditions">
+            <div class="condition"><strong>Untuned base</strong>Qwen3-1.7B with the same task template</div>
+            <div class="condition"><strong>Fine-tuned SLM</strong>keigo-slm with identical decoding</div>
+            <div class="condition"><strong>Naive frontier</strong>Translation request with no register instruction</div>
+            <div class="condition"><strong>Prompted frontier</strong>Explicit register-preservation instruction</div>
+          </div>
+        </div>`;
+    }
+
+    function renderMeasuredEvaluation(payload) {
+      const modelsById = Object.fromEntries(payload.models.map((model) => [model.id, model]));
+      const base = modelsById.base;
+      const tuned = modelsById.tuned;
+      const n = payload.evaluation?.n || tuned?.n || 0;
+      const matchDelta = base && tuned ? tuned.register_match_accuracy - base.register_match_accuracy : null;
+      const flatteningReduction = base && tuned ? base.flattening_rate - tuned.flattening_rate : null;
+      $("eval-badge").className = "eval-badge measured";
+      $("eval-badge").textContent = `Measured · n=${n}`;
+
+      const rows = EVAL_ORDER.filter((id) => modelsById[id]).map((id) => {
+        const model = modelsById[id];
+        return `<tr class="${id === "tuned" ? "tuned" : ""}">
+          <td>${escapeHtml(model.label || id)}${id === "tuned" ? '<span class="row-tag">fine-tuned</span>' : ""}</td>
+          <td>${pct(model.register_match_accuracy)}</td>
+          <td>${pct(model.flattening_rate)}</td>
+          <td>${pct(model.flattening_two_step_rate)}</td>
+          <td>${model.n ?? "—"}</td>
+        </tr>`;
+      }).join("");
+
+      $("eval-content").innerHTML = `
+        <div class="eval-summary">
+          <div class="eval-stat"><span>Tuned − base match</span><strong class="${matchDelta > 0 ? "positive" : ""}">${signedPoints(matchDelta)}</strong></div>
+          <div class="eval-stat"><span>Flattening reduction</span><strong class="${flatteningReduction > 0 ? "positive" : ""}">${signedPoints(flatteningReduction)}</strong></div>
+          <div class="eval-stat"><span>Held-out examples</span><strong>${n}</strong></div>
+          <div class="eval-stat"><span>Judge</span><strong style="font-size:16px">${escapeHtml(payload.evaluation?.judge || "fixed")}</strong></div>
+        </div>
+        <div class="table-wrap">
+          <table class="eval-table">
+            <thead><tr><th>Condition</th><th>Register match ↑</th><th>Flattening ↓</th><th>Severe ↓</th><th>n</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <p class="eval-method">All conditions use the same held-out Japanese sources. Match measures source/output register agreement; flattening measures non-casual sources rendered at a lower English register.</p>`;
+    }
+
+    async function loadEvaluation() {
+      try {
+        const response = await fetch("./eval_results.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        if (payload.status === "measured" && Array.isArray(payload.models) && payload.models.length) {
+          renderMeasuredEvaluation(payload);
+        } else {
+          renderPendingEvaluation(payload);
+        }
+      } catch {
+        renderPendingEvaluation();
+      }
+    }
+
     document.querySelectorAll(".register-tab").forEach((tab) => {
       tab.addEventListener("click", () => {
         band = tab.dataset.band;
@@ -493,6 +637,7 @@
     if (savedBackend) $("backend").value = savedBackend;
     renderScenarioList();
     showVariant();
+    loadEvaluation();
   </script>
 </body>
 </html>

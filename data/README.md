@@ -17,6 +17,15 @@ later with the teacher).
 Combined, the trainable set is **balanced 111/111/111**, with **0 checker mismatches, 0
 corruption, and 0 content-stem leakage into the golden set** (all re-verified).
 
+## `train_full.jsonl` — the final v2 training mixture: **2,260 rows**
+
+The QLoRA v2 run uses the merged, leak-guarded set produced by
+`python -m data.build_training_set`: **904 informal / 904 polite / 452 formal** examples.
+It combines 1,076 Tatoeba pairs, 1,043 BSD pairs, 96 formal compositional examples, and the
+45 curated contrastive examples. The derived file is gitignored because redistribution
+terms differ across its source corpora; the committed scripts, seeds, provenance notice, and
+source-specific harvest commands reproduce it.
+
 ## `harvested/`  — real source sentences, scraped from CoCoA-MT
 `python -m data.harvest_cocoa` pulls ~1,980 **real Japanese sentences** with checker labels
 and contrastive `group_id`s. **Source side only** — the register-matched English target must
@@ -34,8 +43,8 @@ constrained generator). `python -m data.filter` → keeps only rows whose Englis
 the source band. Then `python -m data.split` produces `train/dev/test.jsonl`.
 
 ## `golden/eval_set.jsonl`  — the held-out exam (labels only, never trained on)
-**10 rows** (a starter set — expand toward ~100–150 before your final number) across 3
-contrastive groups (`offer-coffee`, `reviewed-docs`, `please-wait`), bands ~3/4/3.
+**127 rows** across 42 contrastive content groups, balanced at **42 informal / 43 polite /
+42 formal** examples and spanning casual, business, and service language.
 `source_band` is the answer key; `reference_en` is a human reference, not used for scoring.
 Its `group_id`s are disjoint from seed/samples to prevent leakage, and every label agrees
 with the register checker.

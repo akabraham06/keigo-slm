@@ -1,0 +1,16 @@
+{
+  "status": "pending",
+  "evaluation": {
+    "golden_set": "data/golden/eval_set.jsonl",
+    "n": 127,
+    "judge": "LLM-as-judge",
+    "decoding": "greedy / temperature 0"
+  },
+  "expected_models": [
+    "base",
+    "tuned",
+    "llm-naive",
+    "llm-baseline"
+  ],
+  "message": "Run the full GPU evaluation before publishing performance claims."
+}

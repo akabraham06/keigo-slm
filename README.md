@@ -13,8 +13,9 @@ dataset, not a clever prompt, is what makes a tiny model hold this behavior ever
 
 | Deliverable | Link |
 |---|---|
-| 📦 Dataset (Hugging Face) | _TODO_ |
+| 📦 Dataset + data card | [data/](https://github.com/akabraham06/keigo-slm/tree/main/data) |
 | 🤖 Model (Hugging Face) | [akabraham06/keigo-slm-qwen3-1.7b-v2](https://huggingface.co/akabraham06/keigo-slm-qwen3-1.7b-v2) |
+| 🧪 Train + evaluate (Colab) | [Open notebook](https://colab.research.google.com/github/akabraham06/keigo-slm/blob/main/notebooks/train_qlora.ipynb) |
 | ▶️ Live demo | [keigo-slm.vercel.app](https://keigo-slm.vercel.app) |
 | 🎬 Demo video (3–5 min) | _TODO_ |
 

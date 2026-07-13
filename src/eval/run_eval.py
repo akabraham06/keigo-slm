@@ -16,7 +16,9 @@ disabled:
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -24,6 +26,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from eval import scorer  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent.parent
+
+DISPLAY_NAMES = {
+    "base": "Untuned Qwen3-1.7B",
+    "tuned": "Fine-tuned keigo-slm",
+    "llm-naive": "Frontier LLM · naive prompt",
+    "llm-baseline": "Frontier LLM · register prompt",
+}
 
 
 def evaluate(golden: list[dict], translate_fns: dict, judge_fn):
@@ -49,7 +58,8 @@ def evaluate(golden: list[dict], translate_fns: dict, judge_fn):
     return results, preds_by_model
 
 
-def _write_outputs(results, preds_by_model):
+def _write_outputs(results, preds_by_model, *, judge: str, golden_path: str,
+                   model_ids: dict[str, str]) -> None:
     out_dir = REPO / "results"
     out_dir.mkdir(exist_ok=True)
 
@@ -76,7 +86,38 @@ def _write_outputs(results, preds_by_model):
     (out_dir / "error_analysis.md").write_text(
         "# Error analysis — flattening cases (source rendered at a lower register)\n\n"
         + ("\n".join(lines) if lines else "_No flattening on this run._") + "\n")
-    print(f"wrote results/results_table.md, predictions.jsonl, error_analysis.md")
+
+    # One machine-readable source feeds both the public site and the submission checker.
+    payload = {
+        "status": "measured",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "evaluation": {
+            "golden_set": golden_path,
+            "n": max((s.get("n", 0) for s in results.values()), default=0),
+            "judge": judge,
+            "decoding": "greedy / temperature 0",
+            "metrics": {
+                "register_match_accuracy": "Output English register matches the Japanese source.",
+                "flattening_rate": "Non-casual sources rendered at a lower English register.",
+                "flattening_two_step_rate": "Formal sources collapsed all the way to casual English.",
+            },
+        },
+        "models": [
+            {
+                "id": name,
+                "label": DISPLAY_NAMES.get(name, name),
+                "model": model_ids.get(name, ""),
+                **scores,
+            }
+            for name, scores in results.items()
+        ],
+    }
+    rendered = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    (out_dir / "eval_results.json").write_text(rendered)
+    web_result = REPO / "app/web/eval_results.json"
+    web_result.write_text(rendered)
+    print("wrote results/results_table.md, predictions.jsonl, error_analysis.md, "
+          "eval_results.json, and app/web/eval_results.json")
 
 
 def _ensure_llm_credentials() -> None:
@@ -85,7 +126,6 @@ def _ensure_llm_credentials() -> None:
     plain prompts (they aren't secret). Anything already in the environment is left as-is,
     so setting them ahead of time (Colab secrets, --export) skips the prompt entirely."""
     import getpass
-    import os
     if not os.environ.get("TEACHER_API_KEY"):
         os.environ["TEACHER_API_KEY"] = getpass.getpass("TEACHER_API_KEY (input hidden): ").strip()
     if not os.environ.get("TEACHER_MODEL"):
@@ -128,13 +168,16 @@ def main() -> None:
     else:
         from eval.judge import classify_english_band as judge_fn
     translate_fns = {}
+    model_ids = {}
 
     if args.base:
         from inference.translate import make_translator
         translate_fns["base"] = make_translator(args.base)
+        model_ids["base"] = args.base
     if args.tuned:
         from inference.translate import make_translator
         translate_fns["tuned"] = make_translator(args.tuned)
+        model_ids["tuned"] = args.tuned
     if args.llm:
         from llm_client import complete, load_prompt
         for prompt_file in args.llm_prompt:
@@ -145,6 +188,7 @@ def main() -> None:
             translate_fns[label] = (lambda t: lambda jp: complete(
                 system="You are an expert Japanese-to-English translator.",
                 user=t.replace("{JP}", jp)))(tmpl)
+            model_ids[label] = f"{os.environ.get('TEACHER_MODEL', 'frontier model')} · {prompt_file}"
 
     if not translate_fns:
         raise SystemExit("no models enabled")
@@ -152,7 +196,8 @@ def main() -> None:
     print(f"evaluating {list(translate_fns)} on {len(golden)} golden rows")
     results, preds = evaluate(golden, translate_fns, judge_fn)
     print("\n" + scorer.format_table(results))
-    _write_outputs(results, preds)
+    _write_outputs(results, preds, judge=args.judge, golden_path=args.golden,
+                   model_ids=model_ids)
 
 
 if __name__ == "__main__":
