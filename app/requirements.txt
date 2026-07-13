@@ -1,4 +1,8 @@
-# HF Space runtime deps (kept minimal for fast Space builds).
+# Live-demo backend deps (server.py). The model itself needs unsloth + torch on a GPU box.
+fastapi
+uvicorn
+pydantic
+# (gradio kept for the optional HF Space demo in app.py)
 gradio
 transformers
 torch

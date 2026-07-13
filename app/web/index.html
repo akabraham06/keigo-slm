@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>keigo-slm · live demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .jp { font-family: 'Noto Sans JP', sans-serif; }
+    .fade { animation: fade .25s ease; } @keyframes fade { from {opacity:0; transform: translateY(4px)} to {opacity:1} }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <div class="max-w-2xl mx-auto px-5 py-10">
+
+    <!-- header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight">keigo-slm</h1>
+      <p class="text-slate-500 mt-1">Japanese → English that <span class="font-semibold text-slate-700">keeps the politeness level</span> of the source. The behavior is baked into the model's weights — no prompt required.</p>
+    </header>
+
+    <!-- backend -->
+    <div class="flex items-center gap-2 mb-6 text-sm">
+      <span id="dot" class="w-2.5 h-2.5 rounded-full bg-slate-300 shrink-0"></span>
+      <input id="backend" class="flex-1 rounded-lg border border-slate-200 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-slate-300"
+             placeholder="Backend URL (paste the Colab tunnel URL, e.g. https://xxx.trycloudflare.com)" />
+      <button id="ping" class="rounded-lg px-3 py-2 bg-slate-200 hover:bg-slate-300 font-medium">Check</button>
+    </div>
+
+    <!-- examples -->
+    <div class="mb-4">
+      <p class="text-xs uppercase tracking-wide text-slate-400 mb-2">Try an example — same meaning, three politeness levels</p>
+      <div id="examples" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <!-- input -->
+    <textarea id="jp" rows="3" class="jp w-full rounded-xl border border-slate-200 p-4 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              placeholder="日本語を入力… (type or pick an example)"></textarea>
+    <button id="go" class="mt-3 w-full rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 transition disabled:opacity-50">
+      Translate
+    </button>
+
+    <!-- result -->
+    <div id="result" class="mt-6 hidden fade">
+      <div class="rounded-xl border border-slate-200 bg-white p-5">
+        <div id="status" class="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full mb-4"></div>
+        <p id="english" class="text-xl leading-relaxed text-slate-900"></p>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-slate-100 text-sm">
+          <span class="text-slate-400">source</span>
+          <span id="src-badge" class="px-2.5 py-1 rounded-md font-medium"></span>
+          <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <span class="text-slate-400">output</span>
+          <span id="out-badge" class="px-2.5 py-1 rounded-md font-medium"></span>
+        </div>
+      </div>
+    </div>
+
+    <p id="error" class="mt-4 text-sm text-red-600 hidden"></p>
+
+    <footer class="mt-10 text-xs text-slate-400">
+      Source register is detected deterministically (Japanese verb morphology). Output register is
+      estimated by a heuristic judge. Flattening = politeness rendered lower than the source.
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const BANDS = {
+      informal: { label: "casual · くだけた", cls: "bg-slate-100 text-slate-600" },
+      polite:   { label: "polite · 丁寧",     cls: "bg-emerald-100 text-emerald-700" },
+      formal:   { label: "formal · 敬語",     cls: "bg-violet-100 text-violet-700" },
+    };
+    const STATUS = {
+      preserved:   { text: "✓ Register preserved", cls: "bg-emerald-100 text-emerald-700" },
+      flattened:   { text: "⚠ Flattened — politeness lost", cls: "bg-red-100 text-red-700" },
+      over_polite: { text: "↑ Slightly more formal than source", cls: "bg-amber-100 text-amber-700" },
+    };
+    const EXAMPLES = [
+      { jp: "コーヒー飲む？", tag: "casual" },
+      { jp: "コーヒーを飲みますか。", tag: "polite" },
+      { jp: "コーヒーをお召し上がりになりますか。", tag: "formal" },
+      { jp: "資料見とくね。", tag: "casual" },
+      { jp: "資料を確認します。", tag: "polite" },
+      { jp: "資料を拝見いたします。", tag: "formal" },
+    ];
+
+    // persist backend URL
+    const saved = localStorage.getItem("keigo_backend");
+    if (saved) $("backend").value = saved;
+    $("backend").addEventListener("input", () => localStorage.setItem("keigo_backend", $("backend").value.trim()));
+
+    // example chips
+    EXAMPLES.forEach((e) => {
+      const b = document.createElement("button");
+      b.className = "jp text-sm px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50 transition";
+      b.innerHTML = `${e.jp} <span class="text-[10px] text-slate-400 ml-1">${e.tag}</span>`;
+      b.onclick = () => { $("jp").value = e.jp; };
+      $("examples").appendChild(b);
+    });
+
+    const base = () => ($("backend").value.trim().replace(/\/+$/, ""));
+
+    async function ping() {
+      $("dot").className = "w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0";
+      try {
+        const r = await fetch(base() + "/health");
+        const j = await r.json();
+        $("dot").className = "w-2.5 h-2.5 rounded-full " + (j.ok ? "bg-emerald-500" : "bg-amber-400") + " shrink-0";
+      } catch { $("dot").className = "w-2.5 h-2.5 rounded-full bg-red-500 shrink-0"; }
+    }
+
+    async function translate() {
+      const jp = $("jp").value.trim();
+      $("error").classList.add("hidden");
+      if (!base()) { showError("Set the backend URL first (the Colab tunnel URL)."); return; }
+      if (!jp) return;
+      $("go").disabled = true; $("go").textContent = "Translating…";
+      try {
+        const r = await fetch(base() + "/translate", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ jp }),
+        });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const j = await r.json();
+        if (j.error) throw new Error(j.error);
+        render(j);
+      } catch (e) {
+        showError("Could not reach the model backend. Is the Colab cell running and the URL correct? (" + e.message + ")");
+      } finally {
+        $("go").disabled = false; $("go").textContent = "Translate";
+      }
+    }
+
+    function render(j) {
+      const s = STATUS[j.status] || STATUS.preserved;
+      $("status").className = "inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded-full mb-4 " + s.cls;
+      $("status").textContent = s.text;
+      $("english").textContent = j.english;
+      const sb = BANDS[j.source_band], ob = BANDS[j.output_band];
+      $("src-badge").className = "px-2.5 py-1 rounded-md font-medium " + sb.cls; $("src-badge").textContent = sb.label;
+      $("out-badge").className = "px-2.5 py-1 rounded-md font-medium " + ob.cls; $("out-badge").textContent = ob.label;
+      $("result").classList.remove("hidden");
+      $("result").classList.remove("fade"); void $("result").offsetWidth; $("result").classList.add("fade");
+    }
+
+    function showError(msg) { $("error").textContent = msg; $("error").classList.remove("hidden"); }
+
+    $("go").onclick = translate;
+    $("ping").onclick = ping;
+    $("jp").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) translate(); });
+    if (saved) ping();
+  </script>
+</body>
+</html>
